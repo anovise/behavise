@@ -35,10 +35,15 @@ const canvas = $('ptr-canvas') as HTMLCanvasElement
 const ctx = canvas.getContext('2d')!
 
 function resizeCanvas(): void {
-  canvas.width = canvas.offsetWidth
-  canvas.height = canvas.offsetHeight
+  const w = canvas.offsetWidth
+  const h = canvas.offsetHeight
+  if (w > 0 && h > 0) {
+    canvas.width = w
+    canvas.height = h
+  }
 }
-resizeCanvas()
+// Double rAF ensures CSS layout has been applied before measuring dimensions
+requestAnimationFrame(() => requestAnimationFrame(resizeCanvas))
 window.addEventListener('resize', resizeCanvas, { passive: true })
 
 function drawTrail(): void {
@@ -137,6 +142,16 @@ b.scroll!.on('scroll', ({ depthPercent, maxDepthPercent }) => {
   $('scroll-depth').textContent = `${depthPercent}%`
   $('scroll-max').textContent   = `${maxDepthPercent}%`
 })
+
+// Show initial scroll depth (0% at page top) immediately
+;(function syncScrollNow(): void {
+  const scrolled = window.scrollY
+  const total    = document.documentElement.scrollHeight - window.innerHeight
+  const pct      = total > 0 ? Math.round((scrolled / total) * 100) : 0
+  $('scroll-fill').style.height = `${pct}%`
+  $('scroll-depth').textContent = `${pct}%`
+  $('scroll-max').textContent   = `${pct}%`
+})()
 
 // ─── Dwell ────────────────────────────────────────────────────────────────
 

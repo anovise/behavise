@@ -98,6 +98,41 @@ body > *:not(.ambient) { position: relative; z-index: 1; }
   letter-spacing: 0.02em;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.02em;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-github svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.btn-github:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
 .status-badge {
   display: flex;
   align-items: center;
@@ -678,7 +713,11 @@ body > *:not(.ambient) { position: relative; z-index: 1; }
 /* ─── Footer ──────────────────────────────────────────────────────────────── */
 
 .footer {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 1.5rem 2rem;
   font-size: 0.7rem;
   color: var(--text-3);
@@ -690,6 +729,20 @@ body > *:not(.ambient) { position: relative; z-index: 1; }
 }
 
 .footer a:hover { text-decoration: underline; }
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer-heart {
+  color: #f472b6;
+}
+
+.footer-sep {
+  opacity: 0.3;
+}
 
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
 
