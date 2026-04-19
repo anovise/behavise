@@ -3,11 +3,11 @@ import { createBehavier } from 'behavier'
 // ─── Init ─────────────────────────────────────────────────────────────────
 
 const b = createBehavier({
-  pointer:    { autoStart: true, maxSamples: 600, minDistance: 2 },
-  dwell:      { autoStart: true, threshold: 800, tolerance: 10 },
+  pointer: { autoStart: true, maxSamples: 600, minDistance: 2 },
+  dwell: { autoStart: true, threshold: 800, tolerance: 10 },
   navigation: { autoStart: true },
-  scroll:     { autoStart: true, throttleMs: 50 },
-  click:      { autoStart: true },
+  scroll: { autoStart: true, throttleMs: 50 },
+  click: { autoStart: true },
   visibility: { autoStart: true, threshold: 0.3 },
 })
 
@@ -61,7 +61,7 @@ function drawTrail(): void {
   const start = Math.max(0, n - 400)
 
   for (let i = start + 1; i < n; i++) {
-    const p    = history[i]
+    const p = history[i]
     const prev = history[i - 1]
     if (!p || !prev) continue
 
@@ -127,7 +127,7 @@ function spawnRipple(x: number, y: number): void {
   const el = document.createElement('div')
   el.className = 'click-ripple'
   el.style.left = `${x}px`
-  el.style.top  = `${y}px`
+  el.style.top = `${y}px`
   document.body.appendChild(el)
   el.addEventListener('animationend', () => el.remove(), { once: true })
 }
@@ -135,22 +135,22 @@ function spawnRipple(x: number, y: number): void {
 // ─── Scroll ───────────────────────────────────────────────────────────────
 
 b.scroll!.on('scroll', ({ depthPercent, maxDepthPercent }) => {
-  const fill      = $('scroll-fill')
-  const marker    = $('scroll-max-marker')
-  fill.style.height   = `${depthPercent}%`
+  const fill = $('scroll-fill')
+  const marker = $('scroll-max-marker')
+  fill.style.height = `${depthPercent}%`
   marker.style.bottom = `${maxDepthPercent}%`
   $('scroll-depth').textContent = `${depthPercent}%`
-  $('scroll-max').textContent   = `${maxDepthPercent}%`
+  $('scroll-max').textContent = `${maxDepthPercent}%`
 })
 
 // Show initial scroll depth (0% at page top) immediately
 ;(function syncScrollNow(): void {
   const scrolled = window.scrollY
-  const total    = document.documentElement.scrollHeight - window.innerHeight
-  const pct      = total > 0 ? Math.round((scrolled / total) * 100) : 0
+  const total = document.documentElement.scrollHeight - window.innerHeight
+  const pct = total > 0 ? Math.round((scrolled / total) * 100) : 0
   $('scroll-fill').style.height = `${pct}%`
   $('scroll-depth').textContent = `${pct}%`
-  $('scroll-max').textContent   = `${pct}%`
+  $('scroll-max').textContent = `${pct}%`
 })()
 
 // ─── Dwell ────────────────────────────────────────────────────────────────
@@ -207,7 +207,7 @@ b.dwell!.on('dwell', ({ zoneId, duration }) => {
   if (timeEl) timeEl.textContent = formatMs(dwellAccum[zoneId]!)
 
   // Flash the zone box
-  const zoneEl = DWELL_ZONES.find(z => z.label === zoneId)
+  const zoneEl = DWELL_ZONES.find((z) => z.label === zoneId)
   if (zoneEl) {
     const box = $(zoneEl.elId)
     box.classList.remove('is-active')
@@ -254,11 +254,16 @@ for (const { elId, label } of VIS_TARGETS) {
   visListEl.appendChild(row)
 }
 
-function updateVisRow(target: string, totalVisible: number, intersections: number, inView: boolean): void {
+function updateVisRow(
+  target: string,
+  totalVisible: number,
+  intersections: number,
+  inView: boolean,
+): void {
   const safeId = target.replace(/\s+/g, '-')
-  const badge  = document.getElementById(`vis-badge-${safeId}`)
-  const label  = document.getElementById(`vis-time-${safeId}`)
-  const visEl  = VIS_TARGETS.find(v => v.label === target)
+  const badge = document.getElementById(`vis-badge-${safeId}`)
+  const label = document.getElementById(`vis-time-${safeId}`)
+  const visEl = VIS_TARGETS.find((v) => v.label === target)
 
   if (badge) {
     badge.textContent = inView ? 'in view' : 'out'
@@ -287,12 +292,11 @@ const pageStart = Date.now()
 
 setInterval(() => {
   const elapsed = Math.floor((Date.now() - pageStart) / 1000)
-  $('nav-time').textContent = elapsed < 60
-    ? `${elapsed}s`
-    : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
+  $('nav-time').textContent =
+    elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
 
   const counts = b.navigation?.visitCounts ?? {}
-  const total  = Object.values(counts).reduce((a, v) => a + v, 0)
+  const total = Object.values(counts).reduce((a, v) => a + v, 0)
   $('nav-visits').textContent = String(total || 1)
 }, 1000)
 

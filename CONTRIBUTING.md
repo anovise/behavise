@@ -85,13 +85,13 @@ Each package is independently buildable and published. Changes to `@behavier/cor
 
 ## Workflow
 
-| Step | Command |
-|---|---|
-| Build all | `npm run build` |
-| Test all | `npm run test` |
-| Type-check | `npm run type-check` |
-| Lint | `npm run lint` |
-| Clean artifacts | `npm run clean` |
+| Step            | Command              |
+| --------------- | -------------------- |
+| Build all       | `npm run build`      |
+| Test all        | `npm run test`       |
+| Type-check      | `npm run type-check` |
+| Lint            | `npm run lint`       |
+| Clean artifacts | `npm run clean`      |
 
 > Turbo caches task outputs — clean with `npm run clean` if you see stale results.
 
@@ -127,6 +127,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 **Scopes:** `core`, `pointer`, `page`, `interaction`, `behavier`, `deps`, `release`
 
 **Examples:**
+
 ```
 feat(pointer): add touchmove support to PointerTracker
 fix(page): correct scroll depth calculation for custom targets

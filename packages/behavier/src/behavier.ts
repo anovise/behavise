@@ -74,15 +74,43 @@ export function createBehavier(options: BehavierOptions = {}): BehavierInstance 
 
   const shared = options.storage ? { storage: options.storage } : {}
 
-  const pointer = make(options.pointer?.enabled, { ...shared, ...options.pointer }, (o) => new PointerTracker(o as PointerTrackerOptions))
-  const dwell = make(options.dwell?.enabled, { ...shared, ...options.dwell }, (o) => new DwellTracker(o as DwellTrackerOptions))
-  const navigation = make(options.navigation?.enabled, { ...shared, ...options.navigation }, (o) => new NavigationTracker(o as NavigationTrackerOptions))
-  const scroll = make(options.scroll?.enabled, { ...shared, ...options.scroll }, (o) => new ScrollTracker(o as ScrollTrackerOptions))
-  const click = make(options.click?.enabled, { ...shared, ...options.click }, (o) => new ClickTracker(o as ClickTrackerOptions))
-  const visibility = make(options.visibility?.enabled, { ...shared, ...options.visibility }, (o) => new VisibilityTracker(o as VisibilityTrackerOptions))
+  const pointer = make(
+    options.pointer?.enabled,
+    { ...shared, ...options.pointer },
+    (o) => new PointerTracker(o as PointerTrackerOptions),
+  )
+  const dwell = make(
+    options.dwell?.enabled,
+    { ...shared, ...options.dwell },
+    (o) => new DwellTracker(o as DwellTrackerOptions),
+  )
+  const navigation = make(
+    options.navigation?.enabled,
+    { ...shared, ...options.navigation },
+    (o) => new NavigationTracker(o as NavigationTrackerOptions),
+  )
+  const scroll = make(
+    options.scroll?.enabled,
+    { ...shared, ...options.scroll },
+    (o) => new ScrollTracker(o as ScrollTrackerOptions),
+  )
+  const click = make(
+    options.click?.enabled,
+    { ...shared, ...options.click },
+    (o) => new ClickTracker(o as ClickTrackerOptions),
+  )
+  const visibility = make(
+    options.visibility?.enabled,
+    { ...shared, ...options.visibility },
+    (o) => new VisibilityTracker(o as VisibilityTrackerOptions),
+  )
 
-  const trackers = [pointer, dwell, navigation, scroll, click, visibility].filter(Boolean) as Array<{
-    start(): void; stop(): void; reset(): void
+  const trackers = [pointer, dwell, navigation, scroll, click, visibility].filter(
+    Boolean,
+  ) as Array<{
+    start(): void
+    stop(): void
+    reset(): void
   }>
 
   return {

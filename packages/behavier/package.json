@@ -31,6 +31,13 @@
     "typescript": "*",
     "vitest": "*"
   },
-  "keywords": ["analytics", "behavior", "tracking", "ux", "heatmap", "typescript"],
+  "keywords": [
+    "analytics",
+    "behavior",
+    "tracking",
+    "ux",
+    "heatmap",
+    "typescript"
+  ],
   "license": "MIT"
 }

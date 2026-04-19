@@ -116,10 +116,9 @@ export class VisibilityTracker extends BaseTracker<VisibilityTrackerEvents> {
   }
 
   protected _attach(): void {
-    this._observer = new IntersectionObserver(
-      (entries) => this._onIntersect(entries),
-      { threshold: this._threshold },
-    )
+    this._observer = new IntersectionObserver((entries) => this._onIntersect(entries), {
+      threshold: this._threshold,
+    })
     for (const { el, label } of this._initTargets) {
       this._initState(el, label)
       this._observer.observe(el)
