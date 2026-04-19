@@ -97,6 +97,8 @@ b.pointer!.on('move', ({ x, y }) => {
   $('ptr-y').textContent = String(y)
   $('ptr-samples').textContent = String(b.pointer!.history.length)
   drawTrail()
+  const hc = document.getElementById('hero-cursor')
+  if (hc) hc.textContent = `${x}, ${y}`
 })
 
 // ─── Clicks ───────────────────────────────────────────────────────────────
@@ -107,6 +109,8 @@ const clickLog = $('click-log')
 b.click!.on('click', ({ target, count, x, y }) => {
   totalClicks++
   $('click-total').textContent = String(totalClicks)
+  const hk = document.getElementById('hero-clicks')
+  if (hk) hk.textContent = String(totalClicks)
 
   const empty = clickLog.querySelector('.log-empty')
   if (empty) empty.remove()
@@ -141,6 +145,8 @@ b.scroll!.on('scroll', ({ depthPercent, maxDepthPercent }) => {
   marker.style.bottom = `${maxDepthPercent}%`
   $('scroll-depth').textContent = `${depthPercent}%`
   $('scroll-max').textContent = `${maxDepthPercent}%`
+  const hd = document.getElementById('hero-depth')
+  if (hd) hd.textContent = `${depthPercent}%`
 })
 
 // Show initial scroll depth (0% at page top) immediately
@@ -292,8 +298,10 @@ const pageStart = Date.now()
 
 setInterval(() => {
   const elapsed = Math.floor((Date.now() - pageStart) / 1000)
-  $('nav-time').textContent =
-    elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
+  const timeStr = elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
+  $('nav-time').textContent = timeStr
+  const ht = document.getElementById('hero-time')
+  if (ht) ht.textContent = timeStr
 
   const counts = b.navigation?.visitCounts ?? {}
   const total = Object.values(counts).reduce((a, v) => a + v, 0)
@@ -303,3 +311,28 @@ setInterval(() => {
 b.navigation!.on('visit', ({ url }) => {
   $('nav-url').textContent = url || location.pathname
 })
+
+// ─── Copy buttons ─────────────────────────────────────────────────────────
+
+const COPY_SVG = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M2 11V3a2 2 0 012-2h8"/></svg>`
+const CHECK_SVG = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l4 4 6-7"/></svg>`
+
+function makeCopyable(btnId: string, iconId: string, text: string): void {
+  const btn = document.getElementById(btnId)
+  const icon = document.getElementById(iconId)
+  if (!btn || !icon) return
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(text).then(() => {
+      icon.innerHTML = CHECK_SVG
+      btn.classList.add('is-copied')
+      setTimeout(() => {
+        icon.innerHTML = COPY_SVG
+        btn.classList.remove('is-copied')
+      }, 2000)
+    })
+  })
+}
+
+makeCopyable('btn-copy-install', 'btn-copy-icon', 'npm install behavier')
+makeCopyable('btn-copy-install-cta', 'btn-copy-icon-cta', 'npm install behavier')
+

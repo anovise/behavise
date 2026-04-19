@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Behavier — Live Showcase</title>
+    <title>Behavier — Real-Time User Behavior Tracking</title>
+    <meta
+      name="description"
+      content="A modular, event-driven TypeScript library for tracking user behavior. Pointer, click, scroll, dwell, visibility, and navigation — zero dependencies."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/style.css" />
@@ -18,7 +22,7 @@
     <!-- ─── Header ─────────────────────────────────────────────────────────── -->
     <header class="header">
       <div class="header-brand">
-        <svg class="logo-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
           <circle cx="12" cy="12" r="4" fill="currentColor" />
           <path
@@ -30,288 +34,713 @@
         </svg>
         <span class="brand-name">behavier</span>
       </div>
-      <p class="header-sub">user behavior tracking · live showcase</p>
+      <nav class="header-nav" aria-label="Page sections">
+        <a href="#demo" class="nav-link">Demo</a>
+        <a href="#packages" class="nav-link">Packages</a>
+        <a href="#quickstart" class="nav-link">Quick Start</a>
+      </nav>
       <div class="header-actions">
         <div class="status-badge">
           <span class="status-dot"></span>
-          <span>tracking</span>
+          <span>live</span>
         </div>
         <a
           href="https://github.com/reasvyn/behavier"
           class="btn-github"
           target="_blank"
           rel="noopener"
+          aria-label="View behavier on GitHub"
         >
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path
               d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
             />
           </svg>
-          View on GitHub
+          GitHub
         </a>
       </div>
     </header>
 
-    <!-- ─── Dashboard ─────────────────────────────────────────────────────── -->
-    <main class="dashboard">
-      <!-- Pointer -->
-      <div class="card card--pointer">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
-                <line x1="8" y1="1.5" x2="8" y2="14.5" stroke="currentColor" stroke-width="1.2" />
-                <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" />
-              </svg>
-            </span>
-            <span class="card-title">Pointer</span>
-          </div>
-          <span class="card-pkg">@behavier/pointer</span>
+    <!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          Open Source &middot; TypeScript &middot; Zero Dependencies
         </div>
-        <div class="card-body">
-          <div class="metrics-row">
-            <div class="metric">
-              <span class="metric-label">X</span>
-              <span class="metric-val mono" id="ptr-x">—</span>
-            </div>
-            <div class="metric">
-              <span class="metric-label">Y</span>
-              <span class="metric-val mono" id="ptr-y">—</span>
-            </div>
-            <div class="metric">
-              <span class="metric-label">Samples</span>
-              <span class="metric-val mono" id="ptr-samples">0</span>
-            </div>
-          </div>
-          <canvas id="ptr-canvas" class="trail-canvas" aria-label="Pointer movement trail"></canvas>
-        </div>
-      </div>
-
-      <!-- Clicks -->
-      <div class="card card--click">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
-                <circle cx="8" cy="8" r="2.5" fill="currentColor" />
-              </svg>
-            </span>
-            <span class="card-title">Clicks</span>
-          </div>
-          <span class="card-pkg">@behavier/interaction</span>
-        </div>
-        <div class="card-body">
-          <div class="click-hero">
-            <span class="click-count-label">total</span>
-            <span class="click-count mono" id="click-total">0</span>
-          </div>
-          <div class="click-log" id="click-log">
-            <div class="log-empty">No clicks yet — try clicking anywhere</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll -->
-      <div class="card card--scroll">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
+        <h1 class="hero-title" id="hero-heading">
+          Know exactly how<br />
+          <span class="hero-title-accent">your users behave</span>
+        </h1>
+        <p class="hero-desc">
+          A modular, event-driven library for tracking user behavior in the browser — pointer
+          movement, clicks, scroll depth, dwell time, element visibility, and SPA navigation. All
+          with a clean TypeScript API.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-install" id="btn-copy-install" title="Click to copy">
+            <span class="btn-install-prefix" aria-hidden="true">$</span>
+            <span class="btn-install-cmd">npm install behavier</span>
+            <span class="btn-install-action" id="btn-copy-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none">
+                <rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" />
                 <path
-                  d="M8 2v12M4 6l4-4 4 4M4 10l4 4 4-4"
-                  stroke="currentColor"
-                  stroke-width="1.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span class="card-title">Scroll</span>
-          </div>
-          <span class="card-pkg">@behavier/page</span>
-        </div>
-        <div class="card-body card-body--scroll">
-          <div class="scroll-meter">
-            <div class="scroll-track">
-              <div class="scroll-fill" id="scroll-fill"></div>
-              <div class="scroll-max-marker" id="scroll-max-marker"></div>
-            </div>
-          </div>
-          <div class="scroll-stats">
-            <div class="metric">
-              <span class="metric-label">Current</span>
-              <span class="metric-val mono" id="scroll-depth">0%</span>
-            </div>
-            <div class="metric">
-              <span class="metric-label">Max</span>
-              <span class="metric-val mono" id="scroll-max">0%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dwell -->
-      <div class="card card--dwell">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
-                <path
-                  d="M8 5v3.5l2.5 1.5"
-                  stroke="currentColor"
-                  stroke-width="1.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span class="card-title">Dwell</span>
-          </div>
-          <span class="card-pkg">@behavier/pointer</span>
-        </div>
-        <div class="card-body">
-          <p class="card-hint">Hover &amp; stay still inside any zone below ↓</p>
-          <div class="dwell-list" id="dwell-list"></div>
-        </div>
-      </div>
-
-      <!-- Visibility -->
-      <div class="card card--visibility">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"
+                  d="M4 4V2.5A1.5 1.5 0 015.5 1H11.5A1.5 1.5 0 0113 2.5V8.5A1.5 1.5 0 0111.5 10H10"
                   stroke="currentColor"
                   stroke-width="1.2"
                 />
-                <circle cx="8" cy="8" r="2" fill="currentColor" />
               </svg>
             </span>
-            <span class="card-title">Visibility</span>
-          </div>
-          <span class="card-pkg">@behavier/interaction</span>
+          </button>
+          <a
+            href="https://github.com/reasvyn/behavier"
+            class="btn-hero-github"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14" aria-hidden="true">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              />
+            </svg>
+            View on GitHub
+          </a>
         </div>
-        <div class="card-body">
-          <p class="card-hint">Scroll down to expose the tracked elements</p>
-          <div class="vis-list" id="vis-list"></div>
-        </div>
+        <a href="#demo" class="hero-scroll-cue">See it in action ↓</a>
       </div>
 
-      <!-- Navigation -->
-      <div class="card card--nav">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-icon">
-              <svg viewBox="0 0 16 16" fill="none">
+      <!-- Live session panel — real tracker data, right now -->
+      <div class="hero-live-panel" aria-label="Live session tracking data">
+        <div class="live-panel-header">
+          <span class="live-panel-dot" aria-hidden="true"></span>
+          <span>Your session &middot; live</span>
+          <code class="live-panel-pkg">behavier</code>
+        </div>
+        <div class="live-stats">
+          <div class="live-stat">
+            <span class="live-stat-icon" style="color: var(--pointer)" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.2" />
+                <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2" />
+              </svg>
+            </span>
+            <div>
+              <div class="live-stat-label">Cursor</div>
+              <div class="live-stat-val mono" id="hero-cursor">—, —</div>
+            </div>
+          </div>
+          <div class="live-stat">
+            <span class="live-stat-icon" style="color: var(--click)" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <circle cx="7" cy="7" r="2.5" fill="currentColor" />
+              </svg>
+            </span>
+            <div>
+              <div class="live-stat-label">Total clicks</div>
+              <div class="live-stat-val mono" id="hero-clicks">0</div>
+            </div>
+          </div>
+          <div class="live-stat">
+            <span class="live-stat-icon" style="color: var(--scroll)" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none">
                 <path
-                  d="M2 8h12M10 4l4 4-4 4"
+                  d="M7 1v12M4 5l3-4 3 4M4 9l3 4 3-4"
                   stroke="currentColor"
-                  stroke-width="1.3"
+                  stroke-width="1.2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
               </svg>
             </span>
-            <span class="card-title">Navigation</span>
+            <div>
+              <div class="live-stat-label">Scroll depth</div>
+              <div class="live-stat-val mono" id="hero-depth">0%</div>
+            </div>
           </div>
-          <span class="card-pkg">@behavier/page</span>
+          <div class="live-stat">
+            <span class="live-stat-icon" style="color: var(--dwell)" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path
+                  d="M7 4v3.5l2 1.2"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <div>
+              <div class="live-stat-label">Time on page</div>
+              <div class="live-stat-val mono" id="hero-time">0s</div>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <div class="metric">
-            <span class="metric-label">Current URL</span>
-            <span class="metric-val metric-val--url mono" id="nav-url">—</span>
-          </div>
-          <div class="metrics-row">
-            <div class="metric">
-              <span class="metric-label">Visits</span>
-              <span class="metric-val mono" id="nav-visits">1</span>
-            </div>
-            <div class="metric">
-              <span class="metric-label">Time on page</span>
-              <span class="metric-val mono" id="nav-time">0s</span>
-            </div>
-          </div>
+        <div class="live-panel-footer">
+          <span>tracked by</span>
+          <code>createBehavier()</code>
         </div>
       </div>
-    </main>
+    </section>
 
-    <!-- ─── Demo Zone ──────────────────────────────────────────────────────── -->
-    <section class="demo-zone">
-      <div class="demo-header">
-        <h2 class="demo-title">Interact below ↓</h2>
-        <p class="demo-desc">
-          Move your cursor, hover zones, click buttons, and scroll — all trackers respond in real
-          time.
+    <!-- ─── Why Section ──────────────────────────────────────────────────────── -->
+    <section class="section section--why" aria-labelledby="why-heading">
+      <div class="section-inner">
+        <div class="section-eyebrow">Why behavier</div>
+        <h2 class="section-title" id="why-heading">
+          Built for developers<br />who care about precision
+        </h2>
+        <p class="section-desc">
+          Drop-in user behavior tracking without the overhead of bloated analytics SDKs. Precise,
+          composable, and entirely under your control.
         </p>
-      </div>
-
-      <!-- Dwell Zones -->
-      <div class="dwell-zones-grid">
-        <div class="dwell-box" id="dzone-0" data-zone="Hero Zone">
-          <span class="dwell-box-label">Hero Zone</span>
-          <span class="dwell-box-hint">hover &amp; hold still</span>
-          <div class="dwell-box-pulse"></div>
-        </div>
-        <div class="dwell-box" id="dzone-1" data-zone="Feature Area">
-          <span class="dwell-box-label">Feature Area</span>
-          <span class="dwell-box-hint">hover &amp; hold still</span>
-          <div class="dwell-box-pulse"></div>
-        </div>
-        <div class="dwell-box" id="dzone-2" data-zone="CTA Section">
-          <span class="dwell-box-label">CTA Section</span>
-          <span class="dwell-box-hint">hover &amp; hold still</span>
-          <div class="dwell-box-pulse"></div>
-        </div>
-      </div>
-
-      <!-- Click Targets -->
-      <div class="click-targets">
-        <button class="btn btn--primary" id="btn-a">Primary Action</button>
-        <button class="btn btn--secondary" id="btn-b">Secondary</button>
-        <button class="btn btn--ghost" id="btn-c">Ghost Button</button>
-        <a href="#" class="btn btn--link" id="link-a" onclick="return false">Anchor Link</a>
-      </div>
-
-      <!-- Visibility Targets -->
-      <div class="vis-section">
-        <div class="vis-target" id="vis-0" data-label="Hero Banner">
-          <div class="vis-target-inner">
-            <span class="vis-target-tag">VisibilityTracker</span>
-            <h3 class="vis-target-title">Hero Banner</h3>
-            <p class="vis-target-body">
-              This element is observed. The tracker measures how long it stays in the viewport.
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon" style="--feat: var(--pointer)">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="10" cy="10" r="3" fill="currentColor" />
+                <path
+                  d="M10 1.5V5M10 15v3.5M1.5 10H5M15 10h3.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">Zero dependencies</h3>
+            <p class="feature-body">
+              Pure browser APIs, no third-party libraries, no runtime bloat. The full bundle is
+              under 5 KB gzipped.
             </p>
           </div>
-        </div>
-        <div class="vis-target" id="vis-1" data-label="Feature Card">
-          <div class="vis-target-inner">
-            <span class="vis-target-tag">VisibilityTracker</span>
-            <h3 class="vis-target-title">Feature Card</h3>
-            <p class="vis-target-body">
-              Scrolling this into view increments the intersection counter and starts a visibility
-              timer.
+          <div class="feature-card">
+            <div class="feature-icon" style="--feat: var(--nav)">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <path
+                  d="M7 8l3 3-3 3M11 14h3"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">TypeScript first</h3>
+            <p class="feature-body">
+              Every event payload, option, and return type is fully typed. IntelliSense works
+              exactly the way you'd expect.
             </p>
           </div>
-        </div>
-        <div class="vis-target" id="vis-2" data-label="CTA Block">
-          <div class="vis-target-inner">
-            <span class="vis-target-tag">VisibilityTracker</span>
-            <h3 class="vis-target-title">CTA Block</h3>
-            <p class="vis-target-body">
-              Each time this element enters or leaves the viewport, an event fires with the total
-              visible time.
+          <div class="feature-card">
+            <div class="feature-icon" style="--feat: var(--click)">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path
+                  d="M4 10h12M14 6l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">Event-driven</h3>
+            <p class="feature-body">
+              Subscribe to exactly the events you need. Each tracker emits strongly-typed events
+              you can react to in real time.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="--feat: var(--dwell)">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="7" width="5" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="13" y="2" width="5" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="7.5" y="11" width="5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Modular packages</h3>
+            <p class="feature-body">
+              Install only what you need — <code>@behavier/pointer</code>,
+              <code>@behavier/interaction</code>, <code>@behavier/page</code>. Or grab them all
+              with <code>behavier</code>.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="--feat: var(--scroll)">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path
+                  d="M4 13l6-6 6 6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path d="M10 17V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Zero config</h3>
+            <p class="feature-body">
+              Works immediately with <code>autoStart: true</code>. Sensible defaults, fully
+              customizable when you need more control.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── Footer ────────────────────────────────────────────────────────── -->
+    <!-- ─── Live Demo ────────────────────────────────────────────────────────── -->
+    <section class="section section--demo" id="demo" aria-labelledby="demo-heading">
+      <div class="section-inner section-inner--wide">
+        <div class="section-eyebrow">Live Showcase</div>
+        <h2 class="section-title" id="demo-heading">Every interaction, tracked in real time</h2>
+        <p class="section-desc">
+          All six trackers are running right now. Move your cursor, click the buttons, hover a
+          dwell zone, scroll — watch the dashboard respond instantly.
+        </p>
+
+        <!-- ── Tracker Dashboard ── -->
+        <div class="dashboard">
+          <!-- Pointer -->
+          <div class="card card--pointer">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="8" y1="1.5" x2="8" y2="14.5" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" />
+                  </svg>
+                </span>
+                <span class="card-title">Pointer</span>
+              </div>
+              <span class="card-pkg">@behavier/pointer</span>
+            </div>
+            <div class="card-body">
+              <div class="metrics-row">
+                <div class="metric">
+                  <span class="metric-label">X</span>
+                  <span class="metric-val mono" id="ptr-x">—</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Y</span>
+                  <span class="metric-val mono" id="ptr-y">—</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Samples</span>
+                  <span class="metric-val mono" id="ptr-samples">0</span>
+                </div>
+              </div>
+              <canvas id="ptr-canvas" class="trail-canvas" aria-label="Pointer movement trail"></canvas>
+            </div>
+          </div>
+
+          <!-- Clicks -->
+          <div class="card card--click">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
+                    <circle cx="8" cy="8" r="2.5" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="card-title">Clicks</span>
+              </div>
+              <span class="card-pkg">@behavier/interaction</span>
+            </div>
+            <div class="card-body">
+              <div class="click-hero">
+                <span class="click-count-label">total</span>
+                <span class="click-count mono" id="click-total">0</span>
+              </div>
+              <div class="click-log" id="click-log">
+                <div class="log-empty">No clicks yet — try clicking anywhere</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scroll -->
+          <div class="card card--scroll">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8 2v12M4 6l4-4 4 4M4 10l4 4 4-4"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="card-title">Scroll</span>
+              </div>
+              <span class="card-pkg">@behavier/page</span>
+            </div>
+            <div class="card-body card-body--scroll">
+              <div class="scroll-meter">
+                <div class="scroll-track">
+                  <div class="scroll-fill" id="scroll-fill"></div>
+                  <div class="scroll-max-marker" id="scroll-max-marker"></div>
+                </div>
+              </div>
+              <div class="scroll-stats">
+                <div class="metric">
+                  <span class="metric-label">Current</span>
+                  <span class="metric-val mono" id="scroll-depth">0%</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Max</span>
+                  <span class="metric-val mono" id="scroll-max">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dwell -->
+          <div class="card card--dwell">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
+                    <path
+                      d="M8 5v3.5l2.5 1.5"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="card-title">Dwell</span>
+              </div>
+              <span class="card-pkg">@behavier/pointer</span>
+            </div>
+            <div class="card-body">
+              <p class="card-hint">Hover &amp; stay still inside any zone below ↓</p>
+              <div class="dwell-list" id="dwell-list"></div>
+            </div>
+          </div>
+
+          <!-- Visibility -->
+          <div class="card card--visibility">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <circle cx="8" cy="8" r="2" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="card-title">Visibility</span>
+              </div>
+              <span class="card-pkg">@behavier/interaction</span>
+            </div>
+            <div class="card-body">
+              <p class="card-hint">Scroll down to expose the tracked elements</p>
+              <div class="vis-list" id="vis-list"></div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="card card--nav">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M2 8h12M10 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="card-title">Navigation</span>
+              </div>
+              <span class="card-pkg">@behavier/page</span>
+            </div>
+            <div class="card-body">
+              <div class="metric">
+                <span class="metric-label">Current URL</span>
+                <span class="metric-val metric-val--url mono" id="nav-url">—</span>
+              </div>
+              <div class="metrics-row">
+                <div class="metric">
+                  <span class="metric-label">Visits</span>
+                  <span class="metric-val mono" id="nav-visits">1</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Time on page</span>
+                  <span class="metric-val mono" id="nav-time">0s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Interactive Zone ── -->
+        <div class="demo-interactions">
+          <div class="demo-interactions-header">
+            <span class="demo-interactions-dot" aria-hidden="true"></span>
+            <span>Interactive zone — try it</span>
+          </div>
+
+          <div class="demo-group">
+            <div class="demo-group-header">
+              <h3 class="demo-group-title">Dwell Detection</h3>
+              <span class="demo-group-hint">hover and hold still inside a zone</span>
+            </div>
+            <div class="dwell-zones-grid">
+              <div class="dwell-box" id="dzone-0" data-zone="Hero Zone">
+                <span class="dwell-box-label">Hero Zone</span>
+                <span class="dwell-box-hint">hover &amp; hold still</span>
+                <div class="dwell-box-pulse" aria-hidden="true"></div>
+              </div>
+              <div class="dwell-box" id="dzone-1" data-zone="Feature Area">
+                <span class="dwell-box-label">Feature Area</span>
+                <span class="dwell-box-hint">hover &amp; hold still</span>
+                <div class="dwell-box-pulse" aria-hidden="true"></div>
+              </div>
+              <div class="dwell-box" id="dzone-2" data-zone="CTA Section">
+                <span class="dwell-box-label">CTA Section</span>
+                <span class="dwell-box-hint">hover &amp; hold still</span>
+                <div class="dwell-box-pulse" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-group">
+            <div class="demo-group-header">
+              <h3 class="demo-group-title">Click Tracking</h3>
+              <span class="demo-group-hint">click to trigger events</span>
+            </div>
+            <div class="click-targets">
+              <button class="btn btn--primary" id="btn-a">Primary Action</button>
+              <button class="btn btn--secondary" id="btn-b">Secondary</button>
+              <button class="btn btn--ghost" id="btn-c">Ghost Button</button>
+              <a href="#" class="btn btn--link" id="link-a" onclick="return false">Anchor Link</a>
+            </div>
+          </div>
+
+          <div class="demo-group">
+            <div class="demo-group-header">
+              <h3 class="demo-group-title">Visibility Tracking</h3>
+              <span class="demo-group-hint">scroll to expose tracked elements</span>
+            </div>
+            <div class="vis-section">
+              <div class="vis-target" id="vis-0" data-label="Hero Banner">
+                <div class="vis-target-inner">
+                  <span class="vis-target-tag">VisibilityTracker</span>
+                  <h3 class="vis-target-title">Hero Banner</h3>
+                  <p class="vis-target-body">
+                    This element is observed. The tracker measures how long it stays in the
+                    viewport.
+                  </p>
+                </div>
+              </div>
+              <div class="vis-target" id="vis-1" data-label="Feature Card">
+                <div class="vis-target-inner">
+                  <span class="vis-target-tag">VisibilityTracker</span>
+                  <h3 class="vis-target-title">Feature Card</h3>
+                  <p class="vis-target-body">
+                    Scrolling this into view increments the intersection counter and starts a
+                    visibility timer.
+                  </p>
+                </div>
+              </div>
+              <div class="vis-target" id="vis-2" data-label="CTA Block">
+                <div class="vis-target-inner">
+                  <span class="vis-target-tag">VisibilityTracker</span>
+                  <h3 class="vis-target-title">CTA Block</h3>
+                  <p class="vis-target-body">
+                    Each time this element enters or leaves the viewport, an event fires with the
+                    total visible time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Packages ─────────────────────────────────────────────────────────── -->
+    <section class="section section--packages" id="packages" aria-labelledby="packages-heading">
+      <div class="section-inner">
+        <div class="section-eyebrow">Packages</div>
+        <h2 class="section-title" id="packages-heading">Modular by design</h2>
+        <p class="section-desc">
+          Install the full suite or pick only what you need. Each package is independently
+          versioned and tree-shakeable.
+        </p>
+        <div class="packages-grid">
+          <div class="pkg-card pkg-card--featured">
+            <div class="pkg-card-header">
+              <code class="pkg-name">behavier</code>
+              <span class="pkg-badge">unified</span>
+            </div>
+            <p class="pkg-desc">
+              All trackers in a single package. The easiest way to get started with a one-line
+              <code>createBehavier()</code> setup.
+            </p>
+            <div class="pkg-exports">
+              <code>createBehavier()</code>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-card-header">
+              <code class="pkg-name">@behavier/pointer</code>
+            </div>
+            <p class="pkg-desc">Track cursor movement and dwell time across defined zones.</p>
+            <div class="pkg-exports">
+              <code>PointerTracker</code>
+              <code>DwellTracker</code>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-card-header">
+              <code class="pkg-name">@behavier/interaction</code>
+            </div>
+            <p class="pkg-desc">
+              Track clicks per element and measure visibility with IntersectionObserver.
+            </p>
+            <div class="pkg-exports">
+              <code>ClickTracker</code>
+              <code>VisibilityTracker</code>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-card-header">
+              <code class="pkg-name">@behavier/page</code>
+            </div>
+            <p class="pkg-desc">Track scroll depth and SPA navigation via the History API.</p>
+            <div class="pkg-exports">
+              <code>ScrollTracker</code>
+              <code>NavigationTracker</code>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-card-header">
+              <code class="pkg-name">@behavier/core</code>
+              <span class="pkg-badge pkg-badge--core">core</span>
+            </div>
+            <p class="pkg-desc">
+              Foundation types and <code>BaseTracker</code>. Extend it to build your own custom
+              trackers.
+            </p>
+            <div class="pkg-exports">
+              <code>BaseTracker</code>
+              <code>EventDispatcher</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Quick Start ───────────────────────────────────────────────────────── -->
+    <section class="section section--code" id="quickstart" aria-labelledby="qs-heading">
+      <div class="section-inner">
+        <div class="section-eyebrow">Quick Start</div>
+        <h2 class="section-title" id="qs-heading">Up and running in seconds</h2>
+        <div class="quickstart-grid">
+          <div class="qs-step">
+            <div class="qs-num" aria-hidden="true">1</div>
+            <div class="qs-body">
+              <h3 class="qs-title">Install</h3>
+              <div class="code-block code-block--shell">
+                <span class="c-prompt">$</span> npm install behavier
+              </div>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num" aria-hidden="true">2</div>
+            <div class="qs-body">
+              <h3 class="qs-title">Import &amp; initialize</h3>
+              <div class="code-block">
+                <pre class="code-pre"><code><span class="c-kw">import</span> <span class="c-op">{</span> createBehavier <span class="c-op">}</span> <span class="c-kw">from</span> <span class="c-str">'behavier'</span>
+
+<span class="c-kw">const</span> b <span class="c-op">=</span> <span class="c-fn">createBehavier</span><span class="c-op">({</span>
+  pointer<span class="c-op">:</span> <span class="c-op">{</span> autoStart<span class="c-op">:</span> <span class="c-lit">true</span> <span class="c-op">},</span>
+  click<span class="c-op">:   {</span> autoStart<span class="c-op">:</span> <span class="c-lit">true</span> <span class="c-op">},</span>
+  scroll<span class="c-op">:  {</span> autoStart<span class="c-op">:</span> <span class="c-lit">true</span> <span class="c-op">},</span>
+<span class="c-op">})</span></code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="qs-step">
+            <div class="qs-num" aria-hidden="true">3</div>
+            <div class="qs-body">
+              <h3 class="qs-title">React to events</h3>
+              <div class="code-block">
+                <pre class="code-pre"><code>b<span class="c-op">.</span>pointer<span class="c-op">.</span><span class="c-fn">on</span><span class="c-op">(</span><span class="c-str">'move'</span><span class="c-op">, ({</span> x<span class="c-op">,</span> y <span class="c-op">}) =&gt; {</span>
+  console<span class="c-op">.</span><span class="c-fn">log</span><span class="c-op">(</span><span class="c-str">`cursor: <span class="c-tpl">${x}, ${y}</span>`</span><span class="c-op">)</span>
+<span class="c-op">})</span>
+
+b<span class="c-op">.</span>click<span class="c-op">.</span><span class="c-fn">on</span><span class="c-op">(</span><span class="c-str">'click'</span><span class="c-op">, ({</span> target<span class="c-op">,</span> count <span class="c-op">}) =&gt; {</span>
+  console<span class="c-op">.</span><span class="c-fn">log</span><span class="c-op">(</span><span class="c-str">`<span class="c-tpl">${target}</span> clicked <span class="c-tpl">${count}</span>×`</span><span class="c-op">)</span>
+<span class="c-op">})</span>
+
+b<span class="c-op">.</span>scroll<span class="c-op">.</span><span class="c-fn">on</span><span class="c-op">(</span><span class="c-str">'scroll'</span><span class="c-op">, ({</span> depthPercent <span class="c-op">}) =&gt; {</span>
+  console<span class="c-op">.</span><span class="c-fn">log</span><span class="c-op">(</span><span class="c-str">`scrolled <span class="c-tpl">${depthPercent}</span>%`</span><span class="c-op">)</span>
+<span class="c-op">})</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
+    <section class="section section--cta" aria-labelledby="cta-heading">
+      <div class="section-inner">
+        <div class="cta-box">
+          <h2 class="cta-title" id="cta-heading">Ready to understand your users?</h2>
+          <p class="cta-desc">Open source, MIT licensed, zero runtime dependencies.</p>
+          <div class="cta-actions">
+            <button class="btn-install btn-install--lg" id="btn-copy-install-cta" title="Click to copy">
+              <span class="btn-install-prefix" aria-hidden="true">$</span>
+              <span class="btn-install-cmd">npm install behavier</span>
+              <span class="btn-install-action" id="btn-copy-icon-cta" aria-hidden="true">
+                <svg viewBox="0 0 14 14" fill="none">
+                  <rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                  <path
+                    d="M4 4V2.5A1.5 1.5 0 015.5 1H11.5A1.5 1.5 0 0113 2.5V8.5A1.5 1.5 0 0111.5 10H10"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                </svg>
+              </span>
+            </button>
+            <a
+              href="https://github.com/reasvyn/behavier"
+              class="btn-star"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14" aria-hidden="true">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              Star on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Footer ────────────────────────────────────────────────────────────── -->
     <footer class="footer">
       <span class="footer-credit"
         >created with <span class="footer-heart">♥</span> by
