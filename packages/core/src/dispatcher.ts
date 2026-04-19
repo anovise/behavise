@@ -1,9 +1,9 @@
-import type { Emitter, EventListener, EventMap } from './types.js'
+import type { Dispatcher, EventListener, EventMap } from './types.js'
 
 /**
- * Lightweight type-safe event emitter.
+ * Lightweight type-safe event dispatcher.
  */
-export class EventEmitter<Events extends EventMap> implements Emitter<Events> {
+export class EventDispatcher<Events extends EventMap> implements Dispatcher<Events> {
   private readonly _listeners: {
     [K in keyof Events]?: Set<EventListener<Events[K]>>
   } = {}

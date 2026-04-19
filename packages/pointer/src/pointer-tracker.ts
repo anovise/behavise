@@ -72,7 +72,7 @@ export class PointerTracker extends BaseTracker<PointerTrackerEvents> {
     this._history.push(snapshot)
     if (this._history.length > this._maxSamples) this._history.shift()
 
-    this.emitter.emit('move', snapshot)
+    this.dispatcher.emit('move', snapshot)
   }
 
   protected _attach(): void {

@@ -1,5 +1,5 @@
 import type { EventMap, TrackerOptions } from './types.js'
-import { EventEmitter } from './emitter.js'
+import { EventDispatcher } from './dispatcher.js'
 import { MemoryAdapter } from './storage.js'
 import type { StorageAdapter } from './types.js'
 
@@ -7,17 +7,17 @@ import type { StorageAdapter } from './types.js'
  * Abstract base class that all behavier trackers extend.
  *
  * Handles the start/stop/reset lifecycle and wires up
- * a typed event emitter plus a pluggable storage adapter.
+ * a typed event dispatcher plus a pluggable storage adapter.
  */
 export abstract class BaseTracker<Events extends EventMap = EventMap> {
-  protected readonly emitter: EventEmitter<Events>
+  protected readonly dispatcher: EventDispatcher<Events>
   protected readonly storage: StorageAdapter
   protected readonly namespace: string
 
   private _active = false
 
   constructor(options: TrackerOptions & { storage?: StorageAdapter } = {}) {
-    this.emitter = new EventEmitter<Events>()
+    this.dispatcher = new EventDispatcher<Events>()
     this.storage = options.storage ?? new MemoryAdapter()
     this.namespace = options.namespace ?? this.constructor.name.toLowerCase()
 
@@ -47,7 +47,7 @@ export abstract class BaseTracker<Events extends EventMap = EventMap> {
 
   /** Register a listener for tracker events. Returns an unsubscribe function. */
   on<K extends keyof Events>(event: K, listener: (payload: Events[K]) => void): () => void {
-    return this.emitter.on(event, listener)
+    return this.dispatcher.on(event, listener)
   }
 
   // ── Lifecycle hooks ──────────────────────────────────────────────────────

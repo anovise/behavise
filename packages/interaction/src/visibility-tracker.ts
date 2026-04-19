@@ -97,11 +97,11 @@ export class VisibilityTracker extends BaseTracker<VisibilityTrackerEvents> {
       if (entry.isIntersecting) {
         state.enteredAt = now
         state.intersections++
-        this.emitter.emit('visible', this._toRecord(state, now))
+        this.dispatcher.emit('visible', this._toRecord(state, now))
       } else if (state.enteredAt !== null) {
         state.totalVisible += now - state.enteredAt
         state.enteredAt = null
-        this.emitter.emit('hidden', this._toRecord(state, now))
+        this.dispatcher.emit('hidden', this._toRecord(state, now))
       }
     }
   }

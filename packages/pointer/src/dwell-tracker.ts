@@ -111,7 +111,7 @@ export class DwellTracker extends BaseTracker<DwellTrackerEvents> {
         timestamp: this._dwellStart,
       }
       this._records.push(record)
-      this.emitter.emit('dwell', record)
+      this.dispatcher.emit('dwell', record)
     }, this._threshold)
   }
 

@@ -87,7 +87,7 @@ export class ClickTracker extends BaseTracker<ClickTrackerEvents> {
       timestamp: Date.now(),
     }
     this._records.push(record)
-    this.emitter.emit('click', record)
+    this.dispatcher.emit('click', record)
   }
 
   protected _attach(): void {

@@ -18,7 +18,7 @@ export type EventMap = Record<string, unknown>
 
 export type EventListener<T> = (payload: T) => void
 
-export interface Emitter<Events extends EventMap> {
+export interface Dispatcher<Events extends EventMap> {
   on<K extends keyof Events>(event: K, listener: EventListener<Events[K]>): () => void
   off<K extends keyof Events>(event: K, listener: EventListener<Events[K]>): void
   emit<K extends keyof Events>(event: K, payload: Events[K]): void

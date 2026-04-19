@@ -87,7 +87,7 @@ export class ScrollTracker extends BaseTracker<ScrollTrackerEvents> {
       timestamp,
     }
     this._snapshots.push(snapshot)
-    this.emitter.emit('scroll', snapshot)
+    this.dispatcher.emit('scroll', snapshot)
   }
 
   private _getScrollInfo(): { x: number; y: number; depthPercent: number } {

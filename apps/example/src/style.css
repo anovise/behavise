@@ -1,0 +1,712 @@
+/* ─── Variables ──────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #07071a;
+  --surface: #0e0e25;
+  --surface-2: #13132e;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+
+  --text: #e8eaf6;
+  --text-2: #8892b0;
+  --text-3: #4a5568;
+
+  --pointer: #818cf8;
+  --click: #f472b6;
+  --scroll: #34d399;
+  --dwell: #fbbf24;
+  --vis: #22d3ee;
+  --nav: #a78bfa;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ─── Ambient background ──────────────────────────────────────────────────── */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 30%, rgba(129, 140, 248, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 70%, rgba(167, 139, 250, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 50% 100%, rgba(34, 211, 238, 0.04) 0%, transparent 70%);
+}
+
+body > *:not(.ambient) { position: relative; z-index: 1; }
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(7, 7, 26, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--pointer);
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.header-sub {
+  flex: 1;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--scroll);
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 20px;
+  padding: 0.25rem 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--scroll);
+  box-shadow: 0 0 6px var(--scroll);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Dashboard ───────────────────────────────────────────────────────────── */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ─── Card base ───────────────────────────────────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent, var(--border-strong));
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.card--pointer  { --accent: var(--pointer); }
+.card--click    { --accent: var(--click); }
+.card--scroll   { --accent: var(--scroll); }
+.card--dwell    { --accent: var(--dwell); }
+.card--visibility { --accent: var(--vis); }
+.card--nav      { --accent: var(--nav); }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+}
+
+.card-icon svg { width: 16px; height: 16px; }
+
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card-pkg {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+
+.card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-hint {
+  font-size: 0.7rem;
+  color: var(--text-3);
+  margin-bottom: 0.25rem;
+}
+
+/* ─── Metrics ─────────────────────────────────────────────────────────────── */
+
+.metrics-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.metric-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.metric-val {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.metric-val--url {
+  font-size: 0.8rem;
+  word-break: break-all;
+  color: var(--nav);
+}
+
+.mono { font-family: var(--font-mono); }
+
+/* ─── Pointer Card ────────────────────────────────────────────────────────── */
+
+.trail-canvas {
+  width: 100%;
+  height: 140px;
+  border-radius: var(--radius-sm);
+  background: rgba(129, 140, 248, 0.03);
+  border: 1px solid rgba(129, 140, 248, 0.1);
+  display: block;
+}
+
+/* ─── Click Card ──────────────────────────────────────────────────────────── */
+
+.click-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.click-count-label {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.click-count {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--click);
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.click-log {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  overflow: hidden;
+}
+
+.log-empty {
+  font-size: 0.7rem;
+  color: var(--text-3);
+  padding: 0.25rem 0;
+}
+
+.log-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.5rem;
+  background: rgba(244, 114, 182, 0.06);
+  border: 1px solid rgba(244, 114, 182, 0.1);
+  border-radius: 6px;
+  animation: slide-in 0.2s ease-out;
+  font-family: var(--font-mono);
+}
+
+.log-target { color: var(--text-2); }
+.log-count  { color: var(--click); font-weight: 500; }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Scroll Card ─────────────────────────────────────────────────────────── */
+
+.card-body--scroll {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.25rem;
+}
+
+.scroll-meter {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-track {
+  width: 28px;
+  height: 160px;
+  background: rgba(52, 211, 153, 0.06);
+  border: 1px solid rgba(52, 211, 153, 0.15);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(52, 211, 153, 0.9), rgba(52, 211, 153, 0.4));
+  border-radius: 14px;
+  transition: height 0.15s ease-out;
+  height: 0%;
+}
+
+.scroll-max-marker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(52, 211, 153, 0.5);
+  transition: bottom 0.15s ease-out;
+  bottom: 0%;
+}
+
+.scroll-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ─── Dwell Card ──────────────────────────────────────────────────────────── */
+
+.dwell-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dwell-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dwell-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dwell-zone-name {
+  font-size: 0.7rem;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+}
+
+.dwell-zone-time {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--dwell);
+  font-family: var(--font-mono);
+}
+
+.dwell-bar-track {
+  height: 4px;
+  background: rgba(251, 191, 36, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dwell-bar-fill {
+  height: 100%;
+  background: var(--dwell);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.4s ease-out;
+}
+
+/* ─── Visibility Card ─────────────────────────────────────────────────────── */
+
+.vis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.vis-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.vis-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vis-name {
+  font-size: 0.7rem;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+}
+
+.vis-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.vis-badge--in  {
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--vis);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+
+.vis-badge--out {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-3);
+  border: 1px solid var(--border);
+}
+
+.vis-time-label {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+}
+
+/* ─── Nav Card ────────────────────────────────────────────────────────────── */
+
+/* nav uses base metric styles, nothing extra needed */
+
+/* ─── Click Ripple ────────────────────────────────────────────────────────── */
+
+.click-ripple {
+  position: fixed;
+  border-radius: 50%;
+  border: 1.5px solid rgba(244, 114, 182, 0.7);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  animation: ripple-expand 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ripple-expand {
+  from { width: 0px; height: 0px; opacity: 1; }
+  to   { width: 80px; height: 80px; opacity: 0; }
+}
+
+/* ─── Demo Zone ───────────────────────────────────────────────────────────── */
+
+.demo-zone {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.demo-header {
+  text-align: center;
+  padding: 2rem 0 0;
+}
+
+.demo-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.demo-desc {
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+/* Dwell zones grid */
+
+.dwell-zones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.dwell-box {
+  position: relative;
+  min-height: 120px;
+  border: 1.5px dashed rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius);
+  background: rgba(251, 191, 36, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.dwell-box.is-active {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.6);
+}
+
+.dwell-box-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--dwell);
+  letter-spacing: 0.02em;
+}
+
+.dwell-box-hint {
+  font-size: 0.65rem;
+  color: var(--text-3);
+}
+
+.dwell-box-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: rgba(251, 191, 36, 0.15);
+  opacity: 0;
+}
+
+.dwell-box.is-active .dwell-box-pulse {
+  animation: dwell-flash 0.5s ease-out forwards;
+}
+
+@keyframes dwell-flash {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Click targets */
+
+.click-targets {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.btn--primary {
+  background: var(--pointer);
+  color: white;
+  border-color: var(--pointer);
+}
+.btn--primary:hover { background: #6366f1; }
+
+.btn--secondary {
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--nav);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+.btn--secondary:hover { background: rgba(167, 139, 250, 0.2); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-2);
+  border-color: var(--border-strong);
+}
+.btn--ghost:hover { background: rgba(255,255,255,0.05); }
+
+.btn--link {
+  background: transparent;
+  color: var(--click);
+  border-color: rgba(244, 114, 182, 0.3);
+}
+.btn--link:hover { background: rgba(244, 114, 182, 0.08); }
+
+/* Visibility targets */
+
+.vis-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vis-target {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.vis-target.is-visible {
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.06);
+}
+
+.vis-target-inner {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vis-target-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vis);
+  font-family: var(--font-mono);
+}
+
+.vis-target-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.vis-target-body {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.7rem;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+}
+
+.footer a {
+  color: var(--pointer);
+}
+
+.footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .dashboard { grid-template-columns: repeat(2, 1fr); }
+  .dwell-zones-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .header { padding: 1rem; }
+  .header-sub { display: none; }
+  .demo-zone { padding: 0 1rem 3rem; }
+  .dwell-zones-grid { grid-template-columns: 1fr; }
+  .card-body--scroll { flex-direction: column; align-items: flex-start; }
+  .scroll-track { height: 80px; width: 100%; }
+}

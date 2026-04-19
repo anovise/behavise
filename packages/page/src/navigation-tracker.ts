@@ -78,7 +78,7 @@ export class NavigationTracker extends BaseTracker<NavigationTrackerEvents> {
       duration: Date.now() - this._enteredAt,
     }
     this._visits.push(record)
-    this.emitter.emit('visit', record)
+    this.dispatcher.emit('visit', record)
   }
 
   private _recordAndSwitch(): void {
