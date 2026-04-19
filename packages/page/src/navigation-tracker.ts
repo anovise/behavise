@@ -49,6 +49,7 @@ export class NavigationTracker extends BaseTracker<NavigationTrackerEvents> {
     this._handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') this._closeCurrentVisit()
     }
+    if (options.autoStart) this.start()
   }
 
   /** Visit count per normalized URL */

@@ -68,6 +68,7 @@ export class DwellTracker extends BaseTracker<DwellTrackerEvents> {
     this._tolerance = options.tolerance ?? 5
     this._zones = options.zones ? [...options.zones] : []
     this._handleMove = (e: MouseEvent) => this._onMove(e)
+    if (options.autoStart) this.start()
   }
 
   /** All recorded dwell events */

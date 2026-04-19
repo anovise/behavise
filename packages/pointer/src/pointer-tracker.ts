@@ -47,6 +47,7 @@ export class PointerTracker extends BaseTracker<PointerTrackerEvents> {
     this._maxSamples = options.maxSamples ?? 1000
     this._minDistance = options.minDistance ?? 2
     this._handleMove = (e: MouseEvent) => this._onMove(e)
+    if (options.autoStart) this.start()
   }
 
   /** Current pointer position */

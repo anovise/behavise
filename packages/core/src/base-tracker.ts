@@ -21,7 +21,9 @@ export abstract class BaseTracker<Events extends EventMap = EventMap> {
     this.storage = options.storage ?? new MemoryAdapter()
     this.namespace = options.namespace ?? this.constructor.name.toLowerCase()
 
-    if (options.autoStart) this.start()
+    // NOTE: autoStart is intentionally NOT called here.
+    // Each concrete tracker calls `if (options.autoStart) this.start()` at the
+    // END of its own constructor, after all subclass properties are initialized.
   }
 
   get isActive(): boolean {

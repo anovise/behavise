@@ -55,6 +55,7 @@ export class ClickTracker extends BaseTracker<ClickTrackerEvents> {
     super(options)
     this._resolve = options.resolveTarget ?? defaultResolver
     this._handleClick = (e: MouseEvent) => this._onClick(e)
+    if (options.autoStart) this.start()
   }
 
   /** Click counts keyed by resolved target label */

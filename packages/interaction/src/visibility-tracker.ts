@@ -56,6 +56,7 @@ export class VisibilityTracker extends BaseTracker<VisibilityTrackerEvents> {
     super(options)
     this._threshold = options.threshold ?? 0.5
     this._initTargets = options.targets ? [...options.targets] : []
+    if (options.autoStart) this.start()
   }
 
   /** Start observing an element. Safe to call before start(). */

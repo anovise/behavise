@@ -57,6 +57,7 @@ export class ScrollTracker extends BaseTracker<ScrollTrackerEvents> {
       this._lastFired = now
       this._record(now)
     }
+    if (options.autoStart) this.start()
   }
 
   /** Latest scroll position */
