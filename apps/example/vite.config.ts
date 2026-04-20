@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
 
 export default defineConfig({
-  base: '/showcase/behavise/',
+  base: '/behavise/example/',
   resolve: {
     alias: {
       '@anovise/behavise': resolve(__dirname, '../../packages/behavise/src/index.ts'),

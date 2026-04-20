@@ -10,7 +10,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SHOWCASE_DIR="$REPO_ROOT/apps/example"
 PAGES_REPO="anovise/anovise.github.io"
-DEPLOY_PATH="showcase/behavise"
+DEPLOY_PATH="behavise/example"
 TMP_DIR="$(mktemp -d)"
 PAGES_DIR="$TMP_DIR/pages"
 

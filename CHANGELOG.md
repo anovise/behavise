@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **`apps/example`** — interactive showcase (Vite + Vanilla TypeScript)
   - Live demonstration of all six trackers in a single-page app
-  - Deployable to GitHub Pages at `anovise.github.io/showcase/behavise`
+  - Deployable to GitHub Pages at `anovise.github.io/behavise/example`
 
 - **Development tooling**
   - Turborepo monorepo with `build`, `test`, `type-check`, `dev`, `format` pipelines
