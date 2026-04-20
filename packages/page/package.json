@@ -2,10 +2,33 @@
   "name": "@behavier/page",
   "version": "0.1.0",
   "description": "URL visit counting and scroll position tracking for behavier",
+  "author": "Reas Vyn <reasvyn@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reasvyn/behavier.git",
+    "directory": "packages/page"
+  },
+  "homepage": "https://github.com/reasvyn/behavier#readme",
+  "bugs": {
+    "url": "https://github.com/reasvyn/behavier/issues"
+  },
+  "keywords": [
+    "analytics",
+    "behavior",
+    "tracking",
+    "navigation",
+    "scroll",
+    "typescript"
+  ],
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -27,5 +50,8 @@
     "tsup": "*",
     "typescript": "*",
     "vitest": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

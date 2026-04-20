@@ -16,7 +16,8 @@
     "clean": "turbo run clean",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "deploy": "bash scripts/deploy.sh"
+    "deploy": "bash scripts/deploy.sh",
+    "publish": "bash scripts/publish.sh"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
