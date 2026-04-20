@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anovise/behavise.git",
+    "url": "git+https://github.com/anovise/behavise.git",
     "directory": "packages/pointer"
   },
   "homepage": "https://github.com/anovise/behavise#readme",
