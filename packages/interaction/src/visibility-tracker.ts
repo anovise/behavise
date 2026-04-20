@@ -1,5 +1,5 @@
-import { BaseTracker } from '@behavier/core'
-import type { TrackerOptions, Timestamped } from '@behavier/core'
+import { BaseTracker } from '@anovise/behavise-core'
+import type { TrackerOptions, Timestamped } from '@anovise/behavise-core'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

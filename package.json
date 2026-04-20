@@ -1,8 +1,8 @@
 {
-  "name": "behavier-monorepo",
+  "name": "behavise-monorepo",
   "private": true,
   "version": "0.0.0",
-  "description": "Monorepo for the behavier user behavior tracking library",
+  "description": "Monorepo for the behavise user behavior tracking library",
   "workspaces": [
     "packages/*",
     "apps/*"

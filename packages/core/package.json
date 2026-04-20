@@ -1,17 +1,17 @@
 {
-  "name": "@behavier/core",
+  "name": "@anovise/behavise-core",
   "version": "0.1.0",
-  "description": "Core types, base tracker, event emitter, and storage adapters for behavier",
+  "description": "Core types, base tracker, event emitter, and storage adapters for behavise",
   "author": "Reas Vyn <reasvyn@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reasvyn/behavier.git",
+    "url": "https://github.com/anovise/behavise.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/reasvyn/behavier#readme",
+  "homepage": "https://github.com/anovise/behavise#readme",
   "bugs": {
-    "url": "https://github.com/reasvyn/behavier/issues"
+    "url": "https://github.com/anovise/behavise/issues"
   },
   "keywords": [
     "analytics",

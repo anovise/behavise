@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# deploy.sh — Build the showcase app and push it to reasvyn/reasvyn.github.io (gh-pages branch)
+# deploy.sh — Build the showcase app and push it to anovise/anovise.github.io (gh-pages branch)
 #
 # Usage:
 #   npm run deploy
@@ -9,8 +9,8 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SHOWCASE_DIR="$REPO_ROOT/apps/example"
-PAGES_REPO="reasvyn/reasvyn.github.io"
-DEPLOY_PATH="showcase/behavier"
+PAGES_REPO="anovise/anovise.github.io"
+DEPLOY_PATH="showcase/behavise"
 TMP_DIR="$(mktemp -d)"
 PAGES_DIR="$TMP_DIR/pages"
 
@@ -43,9 +43,9 @@ if git diff --cached --quiet; then
 fi
 
 COMMIT_SHA="$(cd "$REPO_ROOT" && git rev-parse --short HEAD)"
-git commit -m "feat(showcase): deploy behavier showcase @ $COMMIT_SHA
+git commit -m "feat(showcase): deploy behavise showcase @ $COMMIT_SHA
 
 Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 git push origin gh-pages --quiet
 
-echo "✔ Deployed to https://reasvyn.github.io/$DEPLOY_PATH/"
+echo "✔ Deployed to https://anovise.github.io/$DEPLOY_PATH/"

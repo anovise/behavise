@@ -1,17 +1,17 @@
 {
-  "name": "behavier",
+  "name": "@anovise/behavise",
   "version": "0.1.0",
   "description": "User behavior tracking library — modular, type-safe, framework-agnostic",
   "author": "Reas Vyn <reasvyn@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reasvyn/behavier.git",
-    "directory": "packages/behavier"
+    "url": "https://github.com/anovise/behavise.git",
+    "directory": "packages/behavise"
   },
-  "homepage": "https://github.com/reasvyn/behavier#readme",
+  "homepage": "https://github.com/anovise/behavise#readme",
   "bugs": {
-    "url": "https://github.com/reasvyn/behavier/issues"
+    "url": "https://github.com/anovise/behavise/issues"
   },
   "keywords": [
     "analytics",
@@ -45,10 +45,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@behavier/core": "0.1.0",
-    "@behavier/pointer": "0.1.0",
-    "@behavier/page": "0.1.0",
-    "@behavier/interaction": "0.1.0"
+    "@anovise/behavise-core": "0.1.0",
+    "@anovise/behavise-pointer": "0.1.0",
+    "@anovise/behavise-page": "0.1.0",
+    "@anovise/behavise-interaction": "0.1.0"
   },
   "devDependencies": {
     "tsup": "*",

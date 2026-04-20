@@ -1,11 +1,11 @@
-# @behavier/pointer
+# @anovise/behavise-pointer
 
-> Pointer position tracking and dwell-time zone detection for the **behavier** library.
+> Pointer position tracking and dwell-time zone detection for the **behavise** library.
 
 ## Installation
 
 ```bash
-npm install @behavier/pointer
+npm install @anovise/behavise-pointer
 ```
 
 ## Trackers
@@ -15,7 +15,7 @@ npm install @behavier/pointer
 Records mouse/pointer position and maintains a capped history of recent positions.
 
 ```ts
-import { PointerTracker } from '@behavier/pointer'
+import { PointerTracker } from '@anovise/behavise-pointer'
 
 const tracker = new PointerTracker({
   autoStart: true,
@@ -55,7 +55,7 @@ Fires a `dwell` event when the pointer is idle inside a registered zone for at l
 Zones can be registered at construction time or added/removed dynamically.
 
 ```ts
-import { DwellTracker } from '@behavier/pointer'
+import { DwellTracker } from '@anovise/behavise-pointer'
 
 const dwell = new DwellTracker({
   autoStart: true,

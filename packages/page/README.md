@@ -1,11 +1,11 @@
-# @behavier/page
+# @anovise/behavise-page
 
-> SPA navigation tracking and scroll depth measurement for the **behavier** library.
+> SPA navigation tracking and scroll depth measurement for the **behavise** library.
 
 ## Installation
 
 ```bash
-npm install @behavier/page
+npm install @anovise/behavise-page
 ```
 
 ## Trackers
@@ -15,7 +15,7 @@ npm install @behavier/page
 Counts URL visits and measures the time spent on each route. Works with single-page applications by patching `history.pushState` and `history.replaceState`.
 
 ```ts
-import { NavigationTracker } from '@behavier/page'
+import { NavigationTracker } from '@anovise/behavise-page'
 
 const nav = new NavigationTracker({ autoStart: true })
 
@@ -56,7 +56,7 @@ console.log(nav.totalVisits) // 6
 Records scroll position on every scroll event (throttled) and calculates how far down the page the user has scrolled as a percentage of total scrollable height.
 
 ```ts
-import { ScrollTracker } from '@behavier/page'
+import { ScrollTracker } from '@anovise/behavise-page'
 
 const scroll = new ScrollTracker({ autoStart: true, throttleMs: 100 })
 

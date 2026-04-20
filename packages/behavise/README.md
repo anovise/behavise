@@ -1,21 +1,21 @@
-# behavier
+# behavise
 
 > Modular, type-safe TypeScript library for tracking user behavior in the browser.
 
-This is the main entry package. It re-exports everything from all `@behavier/*` packages and adds the `createBehavier()` factory for convenient one-call setup.
+This is the main entry package. It re-exports everything from all `@anovise/behavise-*` packages and adds the `createBehavise()` factory for convenient one-call setup.
 
 ## Installation
 
 ```bash
-npm install behavier
+npm install @anovise/behavise
 ```
 
 ## Usage
 
 ```ts
-import { createBehavier, LocalStorageAdapter } from 'behavier'
+import { createBehavise, LocalStorageAdapter } from '@anovise/behavise'
 
-const b = createBehavier({
+const b = createBehavise({
   storage: new LocalStorageAdapter('my-app'),
 
   pointer: { autoStart: true, maxSamples: 500 },
@@ -42,13 +42,13 @@ b.resetAll() // stop + clear all data
 Set `enabled: false` on any tracker key — the corresponding property on the instance will be `null`:
 
 ```ts
-const b = createBehavier({
+const b = createBehavise({
   pointer: { enabled: false }, // b.pointer === null
   click: { autoStart: true }, // b.click is a ClickTracker
 })
 ```
 
-## `createBehavier` options
+## `createBehavise` options
 
 | Key          | Type                                      | Description                                    |
 | ------------ | ----------------------------------------- | ---------------------------------------------- |
@@ -62,14 +62,14 @@ const b = createBehavier({
 
 ## Re-exports
 
-`behavier` re-exports everything from:
+`@anovise/behavise` re-exports everything from:
 
-- `@behavier/core` — types, `EventDispatcher`, `BaseTracker`, storage adapters
-- `@behavier/pointer` — `PointerTracker`, `DwellTracker`
-- `@behavier/page` — `NavigationTracker`, `ScrollTracker`
-- `@behavier/interaction` — `ClickTracker`, `VisibilityTracker`
+- `@anovise/behavise-core` — types, `EventDispatcher`, `BaseTracker`, storage adapters
+- `@anovise/behavise-pointer` — `PointerTracker`, `DwellTracker`
+- `@anovise/behavise-page` — `NavigationTracker`, `ScrollTracker`
+- `@anovise/behavise-interaction` — `ClickTracker`, `VisibilityTracker`
 
-You can import any symbol directly from `behavier`:
+You can import any symbol directly from `@anovise/behavise`:
 
 ```ts
 import {
@@ -82,8 +82,8 @@ import {
   EventDispatcher,
   MemoryAdapter,
   LocalStorageAdapter,
-  createBehavier,
-} from 'behavier'
+  createBehavise,
+} from '@anovise/behavise'
 ```
 
 ## License

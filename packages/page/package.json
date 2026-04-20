@@ -1,17 +1,17 @@
 {
-  "name": "@behavier/page",
+  "name": "@anovise/behavise-page",
   "version": "0.1.0",
-  "description": "URL visit counting and scroll position tracking for behavier",
+  "description": "URL visit counting and scroll position tracking for behavise",
   "author": "Reas Vyn <reasvyn@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reasvyn/behavier.git",
+    "url": "https://github.com/anovise/behavise.git",
     "directory": "packages/page"
   },
-  "homepage": "https://github.com/reasvyn/behavier#readme",
+  "homepage": "https://github.com/anovise/behavise#readme",
   "bugs": {
-    "url": "https://github.com/reasvyn/behavier/issues"
+    "url": "https://github.com/anovise/behavise/issues"
   },
   "keywords": [
     "analytics",
@@ -45,7 +45,7 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@behavier/core": "0.1.0"
+    "@anovise/behavise-core": "0.1.0"
   },
   "devDependencies": {
     "tsup": "*",

@@ -49,7 +49,7 @@ describe('PointerTracker', () => {
       tracker.on('move', fn)
       const before = Date.now()
       fireMouseMove(10, 20)
-      const { timestamp } = fn.mock.calls[0][0] as { timestamp: number }
+      const { timestamp } = fn.mock.calls[0]![0] as { timestamp: number }
       expect(timestamp).toBeGreaterThanOrEqual(before)
       expect(timestamp).toBeLessThanOrEqual(Date.now())
     })

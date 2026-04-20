@@ -84,7 +84,7 @@ describe('DwellTracker', () => {
       fireMouseMove(100, 100)
       vi.advanceTimersByTime(550)
 
-      const record = fn.mock.calls[0][0] as { duration: number; timestamp: number }
+      const record = fn.mock.calls[0]![0] as { duration: number; timestamp: number }
       expect(record.duration).toBeGreaterThanOrEqual(500)
       expect(typeof record.timestamp).toBe('number')
     })

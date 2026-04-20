@@ -4,7 +4,7 @@ import { MemoryAdapter } from './storage.js'
 import type { StorageAdapter } from './types.js'
 
 /**
- * Abstract base class that all behavier trackers extend.
+ * Abstract base class that all behavise trackers extend.
  *
  * Handles the start/stop/reset lifecycle and wires up
  * a typed event dispatcher plus a pluggable storage adapter.

@@ -187,7 +187,7 @@ describe('VisibilityTracker', () => {
       tracker.on('hidden', fn)
       simulateEntry(el, true)
       simulateEntry(el, false)
-      const payload = fn.mock.calls[0][0] as {
+      const payload = fn.mock.calls[0]![0] as {
         totalVisible: number
         intersections: number
         timestamp: number

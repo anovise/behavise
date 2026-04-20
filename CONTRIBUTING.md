@@ -1,4 +1,4 @@
-# Contributing to Behavier
+# Contributing to Behavise
 
 Thank you for taking the time to contribute! 🎉
 
@@ -43,8 +43,8 @@ By participating in this project you agree to abide by our [Code of Conduct](COD
 
 ```bash
 # Clone your fork
-git clone https://github.com/<your-username>/behavier.git
-cd behavier
+git clone https://github.com/<your-username>/behavise.git
+cd behavise
 
 # Install all workspace dependencies
 npm install
@@ -67,19 +67,19 @@ npm run dev
 ## Project Structure
 
 ```
-behavier/
+behavise/
 ├── packages/
-│   ├── core/          # @behavier/core — BaseTracker, EventDispatcher, storage adapters
-│   ├── pointer/       # @behavier/pointer — PointerTracker, DwellTracker
-│   ├── page/          # @behavier/page — NavigationTracker, ScrollTracker
-│   ├── interaction/   # @behavier/interaction — ClickTracker, VisibilityTracker
-│   └── behavier/      # behavier — main entry point, createBehavier() factory
+│   ├── core/          # @anovise/behavise-core — BaseTracker, EventDispatcher, storage adapters
+│   ├── pointer/       # @anovise/behavise-pointer — PointerTracker, DwellTracker
+│   ├── page/          # @anovise/behavise-page — NavigationTracker, ScrollTracker
+│   ├── interaction/   # @anovise/behavise-interaction — ClickTracker, VisibilityTracker
+│   └── behavise/      # behavise — main entry point, createBehavise() factory
 ├── turbo.json
 ├── tsconfig.base.json
 └── package.json
 ```
 
-Each package is independently buildable and published. Changes to `@behavier/core` may affect all other packages.
+Each package is independently buildable and published. Changes to `@anovise/behavise-core` may affect all other packages.
 
 ---
 
@@ -103,7 +103,7 @@ Each package is independently buildable and published. Changes to `@behavier/cor
 - **Zero runtime dependencies** — the library must remain dependency-free. DevDependencies are fine.
 - **Target ES2017** — do not use language features unavailable in ES2017.
 - All new public API surface must be **documented with JSDoc**.
-- All new trackers must extend `BaseTracker` from `@behavier/core` and implement `_attach()`, `_detach()`, and optionally `_reset()`.
+- All new trackers must extend `BaseTracker` from `@anovise/behavise-core` and implement `_attach()`, `_detach()`, and optionally `_reset()`.
 - Prefer `readonly` arrays and objects for public getters.
 - Use `passive: true` for scroll/pointer/touch event listeners.
 - Keep each file focused on a single class or concern.
@@ -124,7 +124,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 **Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`, `build`, `ci`
 
-**Scopes:** `core`, `pointer`, `page`, `interaction`, `behavier`, `deps`, `release`
+**Scopes:** `core`, `pointer`, `page`, `interaction`, `behavise`, `deps`, `release`
 
 **Examples:**
 

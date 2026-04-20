@@ -1,5 +1,5 @@
 {
-  "name": "@behavier/example",
+  "name": "@anovise/behavise-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "behavier": "*"
+    "@anovise/behavise": "*"
   },
   "devDependencies": {
     "vite": "^6.0.0",

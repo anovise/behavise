@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { EventDispatcher } from '../dispatcher.js'
+import type { EventMap } from '../types.js'
 
-interface TestEvents {
+interface TestEvents extends EventMap {
   ping: { value: number }
   pong: { message: string }
 }

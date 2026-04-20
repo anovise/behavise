@@ -35,7 +35,7 @@ export class MemoryAdapter implements StorageAdapter {
 export class LocalStorageAdapter implements StorageAdapter {
   private readonly _prefix: string
 
-  constructor(prefix = 'behavier') {
+  constructor(prefix = 'behavise') {
     this._prefix = `${prefix}:`
   }
 

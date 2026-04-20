@@ -1,11 +1,11 @@
-# @behavier/interaction
+# @anovise/behavise-interaction
 
-> Click-count tracking and element visibility measurement for the **behavier** library.
+> Click-count tracking and element visibility measurement for the **behavise** library.
 
 ## Installation
 
 ```bash
-npm install @behavier/interaction
+npm install @anovise/behavise-interaction
 ```
 
 ## Trackers
@@ -15,7 +15,7 @@ npm install @behavier/interaction
 Counts clicks per DOM element and records the coordinates of every click. The target label is determined by a customizable resolver function.
 
 ```ts
-import { ClickTracker } from '@behavier/interaction'
+import { ClickTracker } from '@anovise/behavise-interaction'
 
 const clicks = new ClickTracker({
   autoStart: true,
@@ -62,7 +62,7 @@ console.log(clicks.records) // ClickRecord[] — full log
 Measures how long specific elements are visible in the viewport using the `IntersectionObserver` API. Elements must be explicitly registered with `observe()`.
 
 ```ts
-import { VisibilityTracker } from '@behavier/interaction'
+import { VisibilityTracker } from '@anovise/behavise-interaction'
 
 const vis = new VisibilityTracker({ autoStart: true, threshold: 0.5 })
 

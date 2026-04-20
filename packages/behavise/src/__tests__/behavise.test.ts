@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { createBehavier } from '../behavier.js'
+import { createBehavise } from '../behavise.js'
 
 // Mock IntersectionObserver (not available in jsdom by default)
 class MockIO {
@@ -11,14 +11,14 @@ class MockIO {
 
 vi.stubGlobal('IntersectionObserver', MockIO)
 
-describe('createBehavier', () => {
+describe('createBehavise', () => {
   afterEach(() => {
     vi.restoreAllMocks()
   })
 
   describe('default instance', () => {
     it('creates all trackers by default', () => {
-      const b = createBehavier()
+      const b = createBehavise()
       expect(b.pointer).not.toBeNull()
       expect(b.dwell).not.toBeNull()
       expect(b.navigation).not.toBeNull()
@@ -29,7 +29,7 @@ describe('createBehavier', () => {
     })
 
     it('all trackers start inactive by default', () => {
-      const b = createBehavier()
+      const b = createBehavise()
       expect(b.pointer!.isActive).toBe(false)
       expect(b.click!.isActive).toBe(false)
       expect(b.scroll!.isActive).toBe(false)
@@ -39,7 +39,7 @@ describe('createBehavier', () => {
 
   describe('autoStart option', () => {
     it('starts trackers when autoStart: true is provided', () => {
-      const b = createBehavier({
+      const b = createBehavise({
         pointer: { autoStart: true },
         click: { autoStart: true },
       })
@@ -51,13 +51,13 @@ describe('createBehavier', () => {
 
   describe('enabled: false', () => {
     it('sets tracker to null when enabled is false', () => {
-      const b = createBehavier({ pointer: { enabled: false } })
+      const b = createBehavise({ pointer: { enabled: false } })
       expect(b.pointer).toBeNull()
       b.resetAll()
     })
 
     it('can disable multiple trackers independently', () => {
-      const b = createBehavier({
+      const b = createBehavise({
         dwell: { enabled: false },
         visibility: { enabled: false },
       })
@@ -70,7 +70,7 @@ describe('createBehavier', () => {
 
   describe('startAll / stopAll / resetAll', () => {
     it('startAll activates all enabled trackers', () => {
-      const b = createBehavier()
+      const b = createBehavise()
       b.startAll()
       expect(b.pointer!.isActive).toBe(true)
       expect(b.click!.isActive).toBe(true)
@@ -79,7 +79,7 @@ describe('createBehavier', () => {
     })
 
     it('stopAll deactivates all enabled trackers', () => {
-      const b = createBehavier()
+      const b = createBehavise()
       b.startAll()
       b.stopAll()
       expect(b.pointer!.isActive).toBe(false)
@@ -87,13 +87,13 @@ describe('createBehavier', () => {
     })
 
     it('resetAll stops and clears all trackers', () => {
-      const b = createBehavier({ click: { autoStart: true } })
+      const b = createBehavise({ click: { autoStart: true } })
       b.resetAll()
       expect(b.click!.isActive).toBe(false)
     })
 
     it('startAll/stopAll/resetAll ignore null trackers', () => {
-      const b = createBehavier({
+      const b = createBehavise({
         pointer: { enabled: false },
         dwell: { enabled: false },
       })
@@ -105,20 +105,20 @@ describe('createBehavier', () => {
 
   describe('tracker-specific options are forwarded', () => {
     it('forwards maxSamples to PointerTracker', () => {
-      const b = createBehavier({ pointer: { maxSamples: 50, autoStart: true } })
+      const b = createBehavise({ pointer: { maxSamples: 50, autoStart: true } })
       // We can't directly inspect private fields, but the tracker should be created without error
       expect(b.pointer).not.toBeNull()
       b.resetAll()
     })
 
     it('forwards threshold to DwellTracker', () => {
-      const b = createBehavier({ dwell: { threshold: 2000 } })
+      const b = createBehavise({ dwell: { threshold: 2000 } })
       expect(b.dwell).not.toBeNull()
       b.resetAll()
     })
 
     it('forwards throttleMs to ScrollTracker', () => {
-      const b = createBehavier({ scroll: { throttleMs: 250 } })
+      const b = createBehavise({ scroll: { throttleMs: 250 } })
       expect(b.scroll).not.toBeNull()
       b.resetAll()
     })
@@ -126,14 +126,14 @@ describe('createBehavier', () => {
 
   describe('empty options object', () => {
     it('works with an empty options object', () => {
-      expect(() => createBehavier({})).not.toThrow()
-      const b = createBehavier({})
+      expect(() => createBehavise({})).not.toThrow()
+      const b = createBehavise({})
       b.resetAll()
     })
 
     it('works with no arguments', () => {
-      expect(() => createBehavier()).not.toThrow()
-      const b = createBehavier()
+      expect(() => createBehavise()).not.toThrow()
+      const b = createBehavise()
       b.resetAll()
     })
   })

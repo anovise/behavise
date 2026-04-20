@@ -1,8 +1,8 @@
-import { createBehavier } from 'behavier'
+import { createBehavise } from '@anovise/behavise'
 
 // ─── Init ─────────────────────────────────────────────────────────────────
 
-const b = createBehavier({
+const b = createBehavise({
   pointer: { autoStart: true, maxSamples: 600, minDistance: 2 },
   dwell: { autoStart: true, threshold: 800, tolerance: 10 },
   navigation: { autoStart: true },
@@ -334,5 +334,9 @@ function makeCopyable(btnId: string, iconId: string, text: string): void {
   })
 }
 
-makeCopyable('btn-copy-install', 'btn-copy-icon', 'npm install behavier')
-makeCopyable('btn-copy-install-cta', 'btn-copy-icon-cta', 'npm install behavier')
+makeCopyable('btn-copy-install', 'btn-copy-icon', 'npm install @anovise/behavise')
+makeCopyable(
+  'btn-copy-install-cta',
+  'btn-copy-icon-cta',
+  'npm install @anovise/behavise',
+)

@@ -1,20 +1,20 @@
-import type { StorageAdapter } from '@behavier/core'
-import { PointerTracker } from '@behavier/pointer'
-import type { PointerTrackerOptions } from '@behavier/pointer'
-import { DwellTracker } from '@behavier/pointer'
-import type { DwellTrackerOptions } from '@behavier/pointer'
-import { NavigationTracker } from '@behavier/page'
-import type { NavigationTrackerOptions } from '@behavier/page'
-import { ScrollTracker } from '@behavier/page'
-import type { ScrollTrackerOptions } from '@behavier/page'
-import { ClickTracker } from '@behavier/interaction'
-import type { ClickTrackerOptions } from '@behavier/interaction'
-import { VisibilityTracker } from '@behavier/interaction'
-import type { VisibilityTrackerOptions } from '@behavier/interaction'
+import type { StorageAdapter } from '@anovise/behavise-core'
+import { PointerTracker } from '@anovise/behavise-pointer'
+import type { PointerTrackerOptions } from '@anovise/behavise-pointer'
+import { DwellTracker } from '@anovise/behavise-pointer'
+import type { DwellTrackerOptions } from '@anovise/behavise-pointer'
+import { NavigationTracker } from '@anovise/behavise-page'
+import type { NavigationTrackerOptions } from '@anovise/behavise-page'
+import { ScrollTracker } from '@anovise/behavise-page'
+import type { ScrollTrackerOptions } from '@anovise/behavise-page'
+import { ClickTracker } from '@anovise/behavise-interaction'
+import type { ClickTrackerOptions } from '@anovise/behavise-interaction'
+import { VisibilityTracker } from '@anovise/behavise-interaction'
+import type { VisibilityTrackerOptions } from '@anovise/behavise-interaction'
 
 // ─── Options ─────────────────────────────────────────────────────────────────
 
-export interface BehavierOptions {
+export interface BehaviseOptions {
   /** Shared storage adapter passed to every tracker */
   storage?: StorageAdapter
   pointer?: PointerTrackerOptions & { enabled?: boolean }
@@ -25,9 +25,9 @@ export interface BehavierOptions {
   visibility?: VisibilityTrackerOptions & { enabled?: boolean }
 }
 
-// ─── BehavierInstance ────────────────────────────────────────────────────────
+// ─── BehaviseInstance ────────────────────────────────────────────────────────
 
-export interface BehavierInstance {
+export interface BehaviseInstance {
   pointer: PointerTracker | null
   dwell: DwellTracker | null
   navigation: NavigationTracker | null
@@ -46,15 +46,15 @@ export interface BehavierInstance {
 // ─── Factory ─────────────────────────────────────────────────────────────────
 
 /**
- * Create a pre-configured behavier instance with all desired trackers.
+ * Create a pre-configured behavise instance with all desired trackers.
  *
  * Trackers are enabled by default; set `{ enabled: false }` to disable one.
  *
  * @example
  * ```ts
- * import { createBehavier } from 'behavier'
+ * import { createBehavise } from '@anovise/behavise'
  *
- * const b = createBehavier({
+ * const b = createBehavise({
  *   pointer: { autoStart: true, maxSamples: 500 },
  *   click:   { autoStart: true },
  * })
@@ -62,7 +62,7 @@ export interface BehavierInstance {
  * b.click?.on('click', ({ target, count }) => console.log(target, count))
  * ```
  */
-export function createBehavier(options: BehavierOptions = {}): BehavierInstance {
+export function createBehavise(options: BehaviseOptions = {}): BehaviseInstance {
   function make<T>(
     enabled: boolean | undefined,
     opts: object | undefined,

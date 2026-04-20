@@ -1,11 +1,11 @@
-# @behavier/core
+# @anovise/behavise-core
 
-> Foundation types, base tracker, event dispatcher, and storage adapters for the **behavier** library.
+> Foundation types, base tracker, event dispatcher, and storage adapters for the **behavise** library.
 
 ## Installation
 
 ```bash
-npm install @behavier/core
+npm install @anovise/behavise-core
 ```
 
 ## What's inside
@@ -15,7 +15,7 @@ npm install @behavier/core
 A lightweight, type-safe pub/sub event emitter. All trackers extend this class.
 
 ```ts
-import { EventDispatcher } from '@behavier/core'
+import { EventDispatcher } from '@anovise/behavise-core'
 
 type MyEvents = { click: { x: number; y: number }; reset: void }
 
@@ -46,7 +46,7 @@ Subclasses must implement:
 | `LocalStorageAdapter` | Persists data in `localStorage` under a namespace prefix |
 
 ```ts
-import { MemoryAdapter, LocalStorageAdapter } from '@behavier/core'
+import { MemoryAdapter, LocalStorageAdapter } from '@anovise/behavise-core'
 
 const mem = new MemoryAdapter()
 const ls = new LocalStorageAdapter('my-app') // keys prefixed as "my-app:..."

@@ -56,7 +56,7 @@ describe('ClickTracker', () => {
       const fn = vi.fn()
       tracker.on('click', fn)
       fireClick(btn, 50, 75)
-      const record = fn.mock.calls[0][0] as {
+      const record = fn.mock.calls[0]![0] as {
         target: string
         count: number
         x: number
@@ -113,7 +113,7 @@ describe('ClickTracker', () => {
       const fn = vi.fn()
       tracker.on('click', fn)
       fireClick(btn)
-      const { target } = fn.mock.calls[0][0] as { target: string }
+      const { target } = fn.mock.calls[0]![0] as { target: string }
       expect(target).toBe('button#submit')
     })
 
@@ -124,7 +124,7 @@ describe('ClickTracker', () => {
       const fn = vi.fn()
       tracker.on('click', fn)
       fireClick(span)
-      const { target } = fn.mock.calls[0][0] as { target: string }
+      const { target } = fn.mock.calls[0]![0] as { target: string }
       expect(target).toBe('span.chip.active')
       span.remove()
     })
@@ -140,7 +140,7 @@ describe('ClickTracker', () => {
       const fn = vi.fn()
       tracker.on('click', fn)
       fireClick(btn)
-      const { target } = fn.mock.calls[0][0] as { target: string }
+      const { target } = fn.mock.calls[0]![0] as { target: string }
       expect(target).toBe('cta-button')
     })
   })

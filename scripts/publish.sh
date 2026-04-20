@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# publish.sh — Build, test, and publish all behavier packages to npm in dependency order.
+# publish.sh — Build, test, and publish all behavise packages to npm in dependency order.
 #
 # Usage:
 #   ./scripts/publish.sh              # publish to npm (tag: latest)
@@ -8,9 +8,9 @@
 #   ./scripts/publish.sh --tag beta --dry-run
 #
 # Publish order (dependency-safe):
-#   1. @behavier/core
-#   2. @behavier/pointer, @behavier/page, @behavier/interaction  (parallel-safe, sequential here)
-#   3. behavier
+#   1. @anovise/behavise-core
+#   2. @anovise/behavise-pointer, @anovise/behavise-page, @anovise/behavise-interaction  (parallel-safe, sequential here)
+#   3. @anovise/behavise
 
 set -euo pipefail
 
@@ -87,7 +87,7 @@ PACKAGES=(
   "packages/pointer"
   "packages/page"
   "packages/interaction"
-  "packages/behavier"
+  "packages/behavise"
 )
 
 for pkg in "${PACKAGES[@]}"; do
