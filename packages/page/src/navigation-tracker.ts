@@ -14,7 +14,7 @@ export interface NavigationTrackerOptions extends TrackerOptions {
   normalizeUrl?: (url: string) => string
 }
 
-export interface NavigationTrackerEvents {
+export type NavigationTrackerEvents = {
   visit: VisitRecord
 }
 

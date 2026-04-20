@@ -30,7 +30,7 @@ export interface DwellTrackerOptions extends TrackerOptions {
   zones?: DwellZone[]
 }
 
-export interface DwellTrackerEvents {
+export type DwellTrackerEvents = {
   dwell: DwellRecord
 }
 

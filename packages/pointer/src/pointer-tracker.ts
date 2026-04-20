@@ -20,7 +20,7 @@ export interface PointerTrackerOptions extends TrackerOptions {
   minDistance?: number
 }
 
-export interface PointerTrackerEvents {
+export type PointerTrackerEvents = {
   move: PointerSnapshot
 }
 

@@ -22,7 +22,7 @@ export interface VisibilityTrackerOptions extends TrackerOptions {
   targets?: Array<{ el: Element; label: string }>
 }
 
-export interface VisibilityTrackerEvents {
+export type VisibilityTrackerEvents = {
   visible: VisibilityRecord
   hidden: VisibilityRecord
 }

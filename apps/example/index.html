@@ -83,7 +83,15 @@
             <span class="btn-install-cmd">npm install behavier</span>
             <span class="btn-install-action" id="btn-copy-icon" aria-hidden="true">
               <svg viewBox="0 0 14 14" fill="none">
-                <rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                <rect
+                  x="1"
+                  y="4"
+                  width="9"
+                  height="9"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
                 <path
                   d="M4 4V2.5A1.5 1.5 0 015.5 1H11.5A1.5 1.5 0 0113 2.5V8.5A1.5 1.5 0 0111.5 10H10"
                   stroke="currentColor"
@@ -219,7 +227,15 @@
           <div class="feature-card">
             <div class="feature-icon" style="--feat: var(--nav)">
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <rect
+                  x="2"
+                  y="3"
+                  width="16"
+                  height="14"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
                 <path
                   d="M7 8l3 3-3 3M11 14h3"
                   stroke="currentColor"
@@ -249,23 +265,47 @@
             </div>
             <h3 class="feature-title">Event-driven</h3>
             <p class="feature-body">
-              Subscribe to exactly the events you need. Each tracker emits strongly-typed events
-              you can react to in real time.
+              Subscribe to exactly the events you need. Each tracker emits strongly-typed events you
+              can react to in real time.
             </p>
           </div>
           <div class="feature-card">
             <div class="feature-icon" style="--feat: var(--dwell)">
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="2" y="7" width="5" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" />
-                <rect x="13" y="2" width="5" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5" />
-                <rect x="7.5" y="11" width="5" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect
+                  x="2"
+                  y="7"
+                  width="5"
+                  height="11"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="13"
+                  y="2"
+                  width="5"
+                  height="16"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="7.5"
+                  y="11"
+                  width="5"
+                  height="7"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
               </svg>
             </div>
             <h3 class="feature-title">Modular packages</h3>
             <p class="feature-body">
               Install only what you need — <code>@behavier/pointer</code>,
-              <code>@behavier/interaction</code>, <code>@behavier/page</code>. Or grab them all
-              with <code>behavier</code>.
+              <code>@behavier/interaction</code>, <code>@behavier/page</code>. Or grab them all with
+              <code>behavier</code>.
             </p>
           </div>
           <div class="feature-card">
@@ -278,7 +318,12 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
-                <path d="M10 17V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path
+                  d="M10 17V7"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
               </svg>
             </div>
             <h3 class="feature-title">Zero config</h3>
@@ -297,8 +342,8 @@
         <div class="section-eyebrow">Live Showcase</div>
         <h2 class="section-title" id="demo-heading">Every interaction, tracked in real time</h2>
         <p class="section-desc">
-          All six trackers are running right now. Move your cursor, click the buttons, hover a
-          dwell zone, scroll — watch the dashboard respond instantly.
+          All six trackers are running right now. Move your cursor, click the buttons, hover a dwell
+          zone, scroll — watch the dashboard respond instantly.
         </p>
 
         <!-- ── Tracker Dashboard ── -->
@@ -310,8 +355,22 @@
                 <span class="card-icon" aria-hidden="true">
                   <svg viewBox="0 0 16 16" fill="none">
                     <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2" />
-                    <line x1="8" y1="1.5" x2="8" y2="14.5" stroke="currentColor" stroke-width="1.2" />
-                    <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" />
+                    <line
+                      x1="8"
+                      y1="1.5"
+                      x2="8"
+                      y2="14.5"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="1.5"
+                      y1="8"
+                      x2="14.5"
+                      y2="8"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
                   </svg>
                 </span>
                 <span class="card-title">Pointer</span>
@@ -333,7 +392,11 @@
                   <span class="metric-val mono" id="ptr-samples">0</span>
                 </div>
               </div>
-              <canvas id="ptr-canvas" class="trail-canvas" aria-label="Pointer movement trail"></canvas>
+              <canvas
+                id="ptr-canvas"
+                class="trail-canvas"
+                aria-label="Pointer movement trail"
+              ></canvas>
             </div>
           </div>
 
@@ -581,8 +644,8 @@
         <div class="section-eyebrow">Packages</div>
         <h2 class="section-title" id="packages-heading">Modular by design</h2>
         <p class="section-desc">
-          Install the full suite or pick only what you need. Each package is independently
-          versioned and tree-shakeable.
+          Install the full suite or pick only what you need. Each package is independently versioned
+          and tree-shakeable.
         </p>
         <div class="packages-grid">
           <div class="pkg-card pkg-card--featured">
@@ -668,7 +731,9 @@
             <div class="qs-body">
               <h3 class="qs-title">Import &amp; initialize</h3>
               <div class="code-block">
-                <pre class="code-pre"><code><span class="c-kw">import</span> <span class="c-op">{</span> createBehavier <span class="c-op">}</span> <span class="c-kw">from</span> <span class="c-str">'behavier'</span>
+                <pre
+                  class="code-pre"
+                ><code><span class="c-kw">import</span> <span class="c-op">{</span> createBehavier <span class="c-op">}</span> <span class="c-kw">from</span> <span class="c-str">'behavier'</span>
 
 <span class="c-kw">const</span> b <span class="c-op">=</span> <span class="c-fn">createBehavier</span><span class="c-op">({</span>
   pointer<span class="c-op">:</span> <span class="c-op">{</span> autoStart<span class="c-op">:</span> <span class="c-lit">true</span> <span class="c-op">},</span>
@@ -683,7 +748,9 @@
             <div class="qs-body">
               <h3 class="qs-title">React to events</h3>
               <div class="code-block">
-                <pre class="code-pre"><code>b<span class="c-op">.</span>pointer<span class="c-op">.</span><span class="c-fn">on</span><span class="c-op">(</span><span class="c-str">'move'</span><span class="c-op">, ({</span> x<span class="c-op">,</span> y <span class="c-op">}) =&gt; {</span>
+                <pre
+                  class="code-pre"
+                ><code>b<span class="c-op">.</span>pointer<span class="c-op">.</span><span class="c-fn">on</span><span class="c-op">(</span><span class="c-str">'move'</span><span class="c-op">, ({</span> x<span class="c-op">,</span> y <span class="c-op">}) =&gt; {</span>
   console<span class="c-op">.</span><span class="c-fn">log</span><span class="c-op">(</span><span class="c-str">`cursor: <span class="c-tpl">${x}, ${y}</span>`</span><span class="c-op">)</span>
 <span class="c-op">})</span>
 
@@ -708,12 +775,24 @@ b<span class="c-op">.</span>scroll<span class="c-op">.</span><span class="c-fn">
           <h2 class="cta-title" id="cta-heading">Ready to understand your users?</h2>
           <p class="cta-desc">Open source, MIT licensed, zero runtime dependencies.</p>
           <div class="cta-actions">
-            <button class="btn-install btn-install--lg" id="btn-copy-install-cta" title="Click to copy">
+            <button
+              class="btn-install btn-install--lg"
+              id="btn-copy-install-cta"
+              title="Click to copy"
+            >
               <span class="btn-install-prefix" aria-hidden="true">$</span>
               <span class="btn-install-cmd">npm install behavier</span>
               <span class="btn-install-action" id="btn-copy-icon-cta" aria-hidden="true">
                 <svg viewBox="0 0 14 14" fill="none">
-                  <rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                  <rect
+                    x="1"
+                    y="4"
+                    width="9"
+                    height="9"
+                    rx="1.5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
                   <path
                     d="M4 4V2.5A1.5 1.5 0 015.5 1H11.5A1.5 1.5 0 0113 2.5V8.5A1.5 1.5 0 0111.5 10H10"
                     stroke="currentColor"
@@ -728,7 +807,13 @@ b<span class="c-op">.</span>scroll<span class="c-op">.</span><span class="c-fn">
               target="_blank"
               rel="noopener"
             >
-              <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14" aria-hidden="true">
+              <svg
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                width="14"
+                height="14"
+                aria-hidden="true"
+              >
                 <path
                   d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
                 />

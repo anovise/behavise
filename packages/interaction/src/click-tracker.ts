@@ -18,7 +18,7 @@ export interface ClickTrackerOptions extends TrackerOptions {
   resolveTarget?: (el: Element) => string
 }
 
-export interface ClickTrackerEvents {
+export type ClickTrackerEvents = {
   click: ClickRecord
 }
 

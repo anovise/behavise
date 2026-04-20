@@ -298,7 +298,8 @@ const pageStart = Date.now()
 
 setInterval(() => {
   const elapsed = Math.floor((Date.now() - pageStart) / 1000)
-  const timeStr = elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
+  const timeStr =
+    elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${pad(elapsed % 60)}s`
   $('nav-time').textContent = timeStr
   const ht = document.getElementById('hero-time')
   if (ht) ht.textContent = timeStr
@@ -335,4 +336,3 @@ function makeCopyable(btnId: string, iconId: string, text: string): void {
 
 makeCopyable('btn-copy-install', 'btn-copy-icon', 'npm install behavier')
 makeCopyable('btn-copy-install-cta', 'btn-copy-icon-cta', 'npm install behavier')
-

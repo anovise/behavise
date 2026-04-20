@@ -22,7 +22,7 @@ export interface ScrollTrackerOptions extends TrackerOptions {
   throttleMs?: number
 }
 
-export interface ScrollTrackerEvents {
+export type ScrollTrackerEvents = {
   scroll: ScrollSnapshot
 }
 
