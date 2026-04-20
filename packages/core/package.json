@@ -2,7 +2,17 @@
   "name": "@anovise/behavise-core",
   "version": "0.1.0",
   "description": "Core types, base tracker, event emitter, and storage adapters for behavise",
-  "author": "Reas Vyn <reasvyn@gmail.com>",
+  "author": {
+    "name": "Reas Vyn",
+    "email": "reasvyn@gmail.com",
+    "url": "https://github.com/reasvyn"
+  },
+  "maintainers": [
+    {
+      "name": "Anovise",
+      "url": "https://github.com/anovise"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,9 +41,9 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {

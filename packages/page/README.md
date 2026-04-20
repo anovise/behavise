@@ -2,6 +2,8 @@
 
 > SPA navigation tracking and scroll depth measurement for the **behavise** library.
 
+Created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 ## Installation
 
 ```bash

@@ -4,6 +4,8 @@
 
 Behavise gives you first-class trackers for the most common UX analytics needs — pointer movement, dwell time, scroll depth, page visits, click counts, and element visibility — all with a consistent API, zero runtime dependencies, and full TypeScript support.
 
+Created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 [![npm](https://img.shields.io/npm/v/%40anovise%2Fbehavise)](https://www.npmjs.com/package/@anovise/behavise)
 [![license](https://img.shields.io/github/license/anovise/behavise)](LICENSE)
 
@@ -435,7 +437,7 @@ behavise/
 │   ├── pointer/          # @anovise/behavise-pointer
 │   ├── page/             # @anovise/behavise-page
 │   ├── interaction/      # @anovise/behavise-interaction
-│   └── behavise/         # behavise (main entry + factory)
+│   └── behavise/         # @anovise/behavise (main entry + factory)
 ├── turbo.json
 ├── tsconfig.base.json
 └── package.json

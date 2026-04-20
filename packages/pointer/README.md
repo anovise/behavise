@@ -2,6 +2,8 @@
 
 > Pointer position tracking and dwell-time zone detection for the **behavise** library.
 
+Created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 ## Installation
 
 ```bash

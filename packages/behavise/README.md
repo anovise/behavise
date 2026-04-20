@@ -4,6 +4,8 @@
 
 This is the main entry package. It re-exports everything from all `@anovise/behavise-*` packages and adds the `createBehavise()` factory for convenient one-call setup.
 
+Created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 ## Installation
 
 ```bash

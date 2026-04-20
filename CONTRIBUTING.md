@@ -2,6 +2,8 @@
 
 Thank you for taking the time to contribute! 🎉
 
+Behavise is created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 This document covers everything you need to know to go from zero to a merged pull request.
 
 ---

@@ -2,6 +2,8 @@
 
 > Foundation types, base tracker, event dispatcher, and storage adapters for the **behavise** library.
 
+Created by [Reas Vyn](https://github.com/reasvyn) and maintained by [Anovise](https://github.com/anovise).
+
 ## Installation
 
 ```bash
