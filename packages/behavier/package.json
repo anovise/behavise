@@ -27,7 +27,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "exports": {
     ".": {
@@ -44,10 +45,10 @@
     "clean": "rm -rf dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@behavier/core": "*",
-    "@behavier/pointer": "*",
-    "@behavier/page": "*",
-    "@behavier/interaction": "*"
+    "@behavier/core": "0.1.0",
+    "@behavier/pointer": "0.1.0",
+    "@behavier/page": "0.1.0",
+    "@behavier/interaction": "0.1.0"
   },
   "devDependencies": {
     "tsup": "*",
@@ -56,5 +57,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": false
 }
